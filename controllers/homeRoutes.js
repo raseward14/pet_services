@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         });
 
         // serialize data so the tamplate can read it
-        const appointments = appointmentData.map((appointment) => 
+        const appointments = appointmentData.map((appointment) =>
         appointment.get ({ plain: true }));
 
         // pass serialized data and session flag into template
