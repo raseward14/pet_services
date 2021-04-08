@@ -53,23 +53,6 @@ Employee.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-
-
-
-
-
-
-        // timeSlots: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        //     get() {
-        //         return this.getDataValue('timeSlots').split(';')
-        //     },
-        //     set(val) {
-        //         this.setDataValue('timeSlots', val.join(';'));
-        //     }
-
-        // },
         totalSlots: {
             type: DataTypes.INTEGER,
             allowNull: false,
