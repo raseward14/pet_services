@@ -4,7 +4,29 @@ const withAuth = require('../utils/auth');
 
 // renders the homepage
 router.get('/', async (req, res) => {
-    res.render
+    try {
+        // get all appointments and JOIN with account data
+        const appointmentData = await Appointment.findAll({
+            include: [
+                {
+                    model: Account,
+                    attributes: ['name'],
+                },
+            ],
+        });
+
+        // serialize data so the tamplate can read it
+        const appointments = appointmentData.map((appointment) => 
+        appointment.get ({ plain: true }));
+
+        // pass serialized data and session flag into template
+        res.render('index', {
+            appointments,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 // renders your profile, use withAuth middleware to prevent access
