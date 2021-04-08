@@ -37,17 +37,39 @@ Employee.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        timeSlots: {
+        week1: {
             type: DataTypes.STRING,
             allowNull: false,
-            get() {
-                return this.getDataValue('timeSlots').split(';')
-            },
-            set(val) {
-                this.setDataValue('timeSlots', val.join(';'));
-            }
-
         },
+        week2: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        week3: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        week4: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
+
+
+
+
+
+        // timeSlots: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        //     get() {
+        //         return this.getDataValue('timeSlots').split(';')
+        //     },
+        //     set(val) {
+        //         this.setDataValue('timeSlots', val.join(';'));
+        //     }
+
+        // },
         totalSlots: {
             type: DataTypes.INTEGER,
             allowNull: false,
