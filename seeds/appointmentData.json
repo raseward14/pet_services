@@ -1,0 +1,17 @@
+[
+    {
+        "accountId": 4,
+        "employeeId": 1,
+        "timeSlot": 0
+    },
+    {
+        "accountId": 5,
+        "employeeId": 2,
+        "timeSlot": 3
+    },
+    {
+        "accountId": 6,
+        "employeeId": 1,
+        "timeSlot": 5
+    }
+]

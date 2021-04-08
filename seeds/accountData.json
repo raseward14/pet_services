@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Johnson",
+        "email": "johnsonF@fakeemail.com",
+        "password": "fakePw56",
+        "petName": "N/A",
+        "role": "emp"
+    },
+    {
+        "name": "Johnny",
+        "email": "JohnnyTest@fakeemail.com",
+        "password": "root123s",
+        "petName": "crawly",
+        "role": "emp"
+    },
+    {
+        "name": "Kenneth",
+        "email": "Kennethisrad1990@fakeemail.com",
+        "password": "goodthingsdonecheap",
+        "petName": "N/A",
+        "role": "emp"
+    },
+    {
+        "name": "Brandy",
+        "email": "brandy@fakeemail.com",
+        "password": "root123",
+        "petName": "lil toots",
+        "role": "user"
+    },
+    {
+        "name": "Robin",
+        "email": "RobinH@fakeemail.com",
+        "password": "redistribute",
+        "petName": "little john",
+        "role": "user"
+    },
+    {
+        "name": "Arthur",
+        "email": "APRoth@fakeemail.com",
+        "password": "Cancancancan",
+        "petName": "Parroket jones",
+        "role": "user"
+    }
+]

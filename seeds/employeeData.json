@@ -1,16 +1,47 @@
 [
     {
-        "name": "johnson",
+        "name": "Johnson",
         "job": "dog walker",
-        "timeslotLenMinutes": 1,
+        "timeslotLenHrs": 1,
         "shiftStart": 9,
-        "shiftEnd": 17
+        "shiftEnd": 17,
+        "accountid": 1,
+        "daysWorking": [
+            "mon",
+            "tues",
+            "wed",
+            "thurs",
+            "fri"
+        ]
     },
     {
-        "name": "Johnathan",
+        "name": "Johnny",
         "job": "dog walker",
-        "timeslotLenMinutes": 1,
+        "timeslotLenHrs": 1,
         "shiftStart": 9,
-        "shiftEnd": 17
+        "shiftEnd": 17,
+        "accountid": 2,
+        "daysWorking": [
+            "fri",
+            "sat",
+            "sun",
+            "thurs",
+            "fri"
+        ]
+    },
+    {
+        "name": "Kenneth",
+        "job": "dog walker",
+        "timeslotLenHrs": 1,
+        "shiftStart": 9,
+        "shiftEnd": 17,
+        "accountid": 3,
+        "daysWorking": [
+            "sat",
+            "sun",
+            "mon",
+            "wed",
+            "fri"
+        ]
     }
 ]
