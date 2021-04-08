@@ -3,18 +3,18 @@ body {
 }
 
 .container {
-    position: relative;
-    max-width: 800px; /* Maximum width */
+    
+    max-width: 700px; /* Maximum width */
     margin: 0 auto; /* Center it */
   }
-  
+
   .container .content {
     position: absolute;
-    top: 78px; 
-    background: rgb(0, 0, 0); 
-    background: rgba(0, 0, 0, 0.5); 
+    top: 78px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
     color: #f1f1f1; /* Grey text */
-    width: 97.2%; 
+    width: 75%;
     padding: 20px; /* Some padding */
   }
 
@@ -54,8 +54,8 @@ body {
 
 form {
     border: 2px solid lightgrey;
-  
-   
+
+
 }
 
 h1 {
@@ -63,10 +63,10 @@ h1 {
 }
 
 #dogwalkers {
-    background: rgba(248, 246, 246, 0.116); 
-    background: rgba(214, 206, 206, 0.884); 
+    background: rgba(248, 246, 246, 0.116);
+    background: rgba(214, 206, 206, 0.884);
     color: #000000f3; /* Grey text */
-    width: 97.2%; 
+    width: 97.2%;
     height: 425px;
     padding: 20px; /* Some padding */
 }
@@ -78,4 +78,4 @@ h1 {
 }
 
 
-    
+
