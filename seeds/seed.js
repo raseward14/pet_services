@@ -103,7 +103,7 @@ const makeBetterEmployeeData = (employeeDatums) => {
                 workingWeek.push(curDay.join(';'))
                 // today = new Date(today.getDate() + 1)
                 // today = new Date(today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + 1));
-                //today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();   
+                //today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             }
             weeks.push(workingWeek.join("/"))
             // console.log(workingWeek)
