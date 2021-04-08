@@ -1,11 +1,13 @@
 const sequelize = require('../config/connection');
-const { Employee } = require('../models');
+const { Account, Employee, Appointment } = require('../models');
 //Name, Job, Timeslot length, shift start, shift end, generate "timeslots" call them by index, total timeslots
 
 //lunch is 11-12
 
 console.log(Employee)
 const employeeData = require('./employeeData.json');
+const accountData = require("./accountData.json");
+const appointmentData = require("./appointmentData.json");
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
@@ -13,15 +15,27 @@ const seedDatabase = async () => {
     let betterEmployeeData;
     // console.log(betterEmployeeData)
     betterEmployeeData = makeBetterEmployeeData(employeeData)
-    console.log(employeeData)
-    console.log(betterEmployeeData)
+    // console.log(employeeData)
+    // console.log(betterEmployeeData)
 
 
     await Employee.bulkCreate(betterEmployeeData, {
-        individualHooks: true,
+        //Makes creation non-parallel, so it's deterministic.
+        //individualHooks: true,
         returning: true,
     });
 
+    await Account.bulkCreate(accountData, {
+        // individualHooks: true,
+        returning: true,
+    })
+
+    //Appointments will be stitched together in a more thorough way in another place.
+    //This is JUST a seed, it does not affect the employee schedule.
+    await Appointment.bulkCreate(appointmentData, {
+        individualHooks: true,
+        returning: true
+    })
     process.exit(0);
 };
 
@@ -45,25 +59,34 @@ const makeBetterEmployeeData = (employeeDatums) => {
 
         // static lunch
         if (start < 11 && end > 12) {
-            console.log("They get a lunch!")
+            // console.log("They get a lunch!")
             totalSlots = end - start - 1
         } else {
             totalSlots = end - start
         }
         let arr = []
-        for (let index = 0; index < totalSlots; index++) {
-            arr.push(index)
+        //Build weekly schedule based on shifts, and days working.
+        for (let index = 0; index < element.daysWorking.length; index++) {
+            let innerArr = []
+            const thing = element.daysWorking[index];
+            innerArr.push(thing)
+            for (let index = 0; index < totalSlots; index++) {
+                innerArr.push(index)
+            }
+            arr.push(innerArr.join(","))
         }
+
 
         betterEmployeeData.push(
             {
                 "name": element.name,
                 "job": element.job,
-                "slotMins": element.timeslotLenMinutes,
+                "slotHrs": element.timeslotLenHrs,
                 "shiftStart": start,
                 "shiftEnd": end,
                 "timeSlots": arr,
-                "totalSlots": totalSlots
+                "totalSlots": totalSlots,
+                "accountid": element.accountid
 
             }
         )

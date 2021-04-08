@@ -13,6 +13,10 @@ Employee.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        accountid: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -50,7 +54,6 @@ Employee.init(
         }
     },
     {
-
         sequelize,
         timestamps: false,
         freezeTableName: true,
