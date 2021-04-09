@@ -60,9 +60,18 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/about', async (req, res) => {
+router.get('/about', (req, res) => {
     res.render('about');
 });
+
+router.get('/calendar', (req, res) => {
+    if (rep.session.logged_in) {
+        res.render('calendar');
+    } else {
+        res.redirect('/login');
+    }
+
+})
 
 module.exports = router;
 

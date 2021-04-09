@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    
+
     max-width: 700px; /* Maximum width */
     margin: 0 auto; /* Center it */
   }
