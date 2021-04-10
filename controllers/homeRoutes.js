@@ -65,12 +65,12 @@ router.get('/about', (req, res) => {
 });
 
 router.get('/calendar', (req, res) => {
-    if (rep.session.logged_in) {
-        res.render('calendar');
-    } else {
-        res.redirect('/login');
-    }
-
+    //if (req.session.logged_in) {
+        //res.render('calendar');
+    //} else {
+        //res.redirect('/login');
+    //}
+    res.render('calendar');
 })
 
 module.exports = router;
