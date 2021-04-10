@@ -12,7 +12,7 @@ console.log('here');
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/calendar');
     } else {
       alert('Failed to log in');
     }

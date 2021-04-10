@@ -64,7 +64,7 @@ router.get('/about', (req, res) => {
     res.render('about');
 });
 
-router.get('/calendar', (req, res) => {
+router.get('/calendar', withAuth, (req, res) => {
     // if (req.session.logged_in) {
     //     res.render('calendar');
     // } else {
