@@ -28,7 +28,7 @@ const seedDatabase = async () => {
     });
 
     await Account.bulkCreate(accountData, {
-        // individualHooks: true,
+        individualHooks: true,
         returning: true,
     })
 
