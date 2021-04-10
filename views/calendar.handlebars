@@ -80,7 +80,9 @@
         currentDayElement.textContent = currentValue.getDay();
         currentToDateString.textContent = currentValue.toDateString();
 
-        console.log(`The current value of the calendar is: ${currentValue}`);
+        let scheduleDate = currentValue.getFullYear() + '-' + currentValue.getMonth() + '-' + currentValue.getDate();
+        console.log(scheduleDate);
     });
+
 
 </script>
