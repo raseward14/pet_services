@@ -40,11 +40,15 @@ router.get('/profile', withAuth, async (req, res) => {
         // serialize data for template
         const account = accountData.get({ plain: true });
 
-        // render profile handlebars
-        res.render('profile', {
-            ...account,
-            logged_in: true
-        });
+        // render profile handlebars, otherwise redirect to login
+        if (req.session.logged_in) {
+            res.render('profile', {
+                ...account,
+                logged_in: true
+            });
+        } else {
+            res.redirect('/login');
+        }
     } catch (err) {
         res.status(500).json(err);
     }
@@ -75,13 +79,13 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get('/calendar', (req, res) => {
-    // if (req.session.logged_in) {
-    //     res.render('calendar');
-    // } else {
-    //     res.redirect('/login');
-    // }
-    res.render('calendar');
+router.get('/calendar', withAuth, (req, res) => {
+    if (req.session.logged_in) {
+        res.render('calendar');
+    } else {
+        res.redirect('/login');
+    }
+   
 })
 
 module.exports = router;
