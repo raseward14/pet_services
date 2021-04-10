@@ -30,6 +30,10 @@ Appointment.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        date: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     },
     {
         sequelize,

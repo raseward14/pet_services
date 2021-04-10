@@ -83,7 +83,7 @@ const makeBetterEmployeeData = (employeeDatums) => {
         // }
         let startDate = new Date(today)
 
-        console.log(startDate)
+        // console.log(startDate)
         for (let index = 0; index < 4; index++) {
             let workingWeek = []
             for (let index = 0; index < 7; index++) {
@@ -108,7 +108,7 @@ const makeBetterEmployeeData = (employeeDatums) => {
             weeks.push(workingWeek.join("/"))
             // console.log(workingWeek)
         }
-        console.log(weeks)
+        // console.log(weeks)
 
         betterEmployeeData.push(
             {
