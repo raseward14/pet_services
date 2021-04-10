@@ -313,3 +313,16 @@ CalendarPicker.prototype.onValueChange = function (callback) {
 }
 let date = new Date();
 console.log(date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate());
+
+var closeM = $(".modal-close");
+var modal = $(".modal");
+closeM.click(function closeModal() {
+
+    modal.removeClass("is-active");
+})
+
+
+var active = $("#active");
+active.click(function openModal() {
+    modal.addClass("is-active");
+})
