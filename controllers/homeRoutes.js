@@ -64,6 +64,17 @@ router.get('/about', (req, res) => {
     res.render('about');
 });
 
+router.get('/index', (req, res) => {
+    res.render('index');
+});
+
+router.get('/info', (req, res) => {
+    res.render('info');
+});
+router.get('/signup', (req, res) => {
+    res.render('signup');
+});
+
 router.get('/calendar', (req, res) => {
     // if (req.session.logged_in) {
     //     res.render('calendar');
