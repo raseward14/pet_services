@@ -311,3 +311,5 @@ CalendarPicker.prototype.onValueChange = function (callback) {
     if (this.callback) return this.callback(this.value);
     this.callback = callback;
 }
+let date = new Date();
+console.log(date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate());
