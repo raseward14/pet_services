@@ -28,20 +28,23 @@
         "email": "brandy@fakeemail.com",
         "password": "root123",
         "petName": "lil toots",
-        "role": "user"
+        "role": "user",
+        "id": 4
     },
     {
         "name": "Robin",
         "email": "RobinH@fakeemail.com",
         "password": "redistribute",
         "petName": "little john",
-        "role": "user"
+        "role": "user",
+        "id": 5
     },
     {
         "name": "Arthur",
         "email": "APRoth@fakeemail.com",
         "password": "Cancancancan",
         "petName": "Parroket jones",
-        "role": "user"
+        "role": "user",
+        "id": 6
     }
 ]

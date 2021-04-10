@@ -35,7 +35,7 @@ const seedDatabase = async () => {
     //Appointments will be stitched together in a more thorough way in another place.
     //This is JUST a seed, it does not affect the employee schedule.
     await Appointment.bulkCreate(appointmentData, {
-        individualHooks: true,
+        // individualHooks: true,
         returning: true
     })
     process.exit(0);
@@ -83,7 +83,7 @@ const makeBetterEmployeeData = (employeeDatums) => {
         // }
         let startDate = new Date(today)
 
-        console.log(startDate)
+        // console.log(startDate)
         for (let index = 0; index < 4; index++) {
             let workingWeek = []
             for (let index = 0; index < 7; index++) {
@@ -108,7 +108,7 @@ const makeBetterEmployeeData = (employeeDatums) => {
             weeks.push(workingWeek.join("/"))
             // console.log(workingWeek)
         }
-        console.log(weeks)
+        // console.log(weeks)
 
         betterEmployeeData.push(
             {
