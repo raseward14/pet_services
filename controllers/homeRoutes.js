@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
     try {
         // find logged in user based on the session ID
-        const accountData = await Account.findByPk(req.session.user_id, {
+        const accountData = await Account.findByPk(req.session.id, {
             include: [{ model: Appointment  }]
         })
 
@@ -65,11 +65,11 @@ router.get('/about', (req, res) => {
 });
 
 router.get('/calendar', (req, res) => {
-    //if (req.session.logged_in) {
-        //res.render('calendar');
-    //} else {
-        //res.redirect('/login');
-    //}
+    // if (req.session.logged_in) {
+    //     res.render('calendar');
+    // } else {
+    //     res.redirect('/login');
+    // }
     res.render('calendar');
 })
 
