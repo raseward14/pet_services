@@ -4,21 +4,24 @@
         "email": "johnsonF@fakeemail.com",
         "password": "fakePw56",
         "petName": "N/A",
-        "role": "emp"
+        "role": "emp",
+        "id": 1
     },
     {
         "name": "Johnny",
         "email": "JohnnyTest@fakeemail.com",
         "password": "root123s",
         "petName": "crawly",
-        "role": "emp"
+        "role": "emp",
+        "id": 2
     },
     {
         "name": "Kenneth",
         "email": "Kennethisrad1990@fakeemail.com",
         "password": "goodthingsdonecheap",
         "petName": "N/A",
-        "role": "emp"
+        "role": "emp",
+        "id": 3
     },
     {
         "name": "Brandy",
