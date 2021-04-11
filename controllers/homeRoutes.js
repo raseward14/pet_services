@@ -79,13 +79,13 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get('/calendar', withAuth, (req, res) => {
+router.get('/calendar',  (req, res) => {
     if (req.session.logged_in) {
         res.render('calendar');
     } else {
         res.redirect('/login');
     }
-   
+   //res.render('calendar')
 })
 
 module.exports = router;
