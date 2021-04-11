@@ -89,7 +89,7 @@ const makeBetterEmployeeData = (employeeDatums) => {
             for (let index = 0; index < 7; index++) {
                 let curDay = []
                 // let dayOfTheWeek = startDate.getDay();
-                curDay.push(startDate.getFullYear() + '-' + (startDate.getMonth() + 1) + '-' + startDate.getDate())
+                curDay.push(startDate.getFullYear() + '-' + (startDate.getMonth()) + '-' + startDate.getDate())
                 startDate.setDate(startDate.getDate() + 1)
                 //make sure the day we're assigning works?
                 //I don't know man.
