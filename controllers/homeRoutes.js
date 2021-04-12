@@ -79,14 +79,22 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get('/calendar',  (req, res) => {
-    if (req.session.logged_in) {
-        res.render('calendar');
-    } else {
-        res.redirect('/login');
+router.get('/calendar', async (req, res) => {
+    //if (req.session.logged_in) {
+        //res.render('calendar');
+    //} else {
+        //res.redirect('/login');
+    //}
+    try {
+        const employeeData = await Employee.findAll();
+        const employees = employeeData.map((employee) => employee.get({ plain: true }));
+
+        res.render('calendar', {employees});
+    } catch (err) {
+        res.status(500).json(err);
     }
-   //res.render('calendar')
-})
+
+});
 
 module.exports = router;
 
