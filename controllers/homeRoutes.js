@@ -31,25 +31,15 @@ router.get('/', async (req, res) => {
 });
 
 // renders your profile, use withAuth middleware to prevent access
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/profile', async (req, res) => {
     try {
-        // find logged in user based on the session ID
-        const accountData = await Account.findByPk(req.session.id, {
-            include: [{ model: Appointment }]
-        })
+        const accountData = await Account.findByPk(req.session.id);
+        const accounts = accountData.map((account) => account.get({ plain: true }));
 
-        // serialize data for template
-        const account = accountData.get({ plain: true });
-
-        // render profile handlebars, otherwise redirect to login
-        if (req.session.logged_in) {
-            res.render('profile', {
-                ...account,
-                logged_in: true
-            });
-        } else {
-            res.redirect('/login');
-        }
+        res.render('calendar', {
+            accounts,
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -74,18 +64,22 @@ router.get('/index', (req, res) => {
 });
 
 router.get('/info', (req, res) => {
-    res.render('info');
+    res.render('info', {
+        logged_in: req.session.logged_in
+    });
 });
+
 router.get('/signup', (req, res) => {
+    // if user already logged in, redirect request to another route
+    if (req.session.logged_in) {
+        res.redirect('profile');
+        return;
+    }
     res.render('signup');
 });
 
-router.get('/calendar', async (req, res) => {
-    //if (req.session.logged_in) {
-    //res.render('calendar');
-    //} else {
-    //res.redirect('/login');
-    //}
+router.get('/calendar', withAuth, async (req, res) => {
+    
     try {
         const employeeData = await Employee.findAll();
         const employees = employeeData.map((employee) => employee.get({ plain: true }));
@@ -93,9 +87,10 @@ router.get('/calendar', async (req, res) => {
         // let times = employees.map((employee) => condenseScheduleObjWeeks([employee.week1, employee.week2, employee.week3, employee.week4]))
         // console.log(times)
 
-
-
-        res.render('calendar', { times });
+        res.render('calendar', {
+            employees,
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
