@@ -173,6 +173,8 @@ CalendarPicker.prototype._insertCalendarIntoWrapper = function () {
 
         handleSelectedElement(keyEvent);
     }, false);
+
+
 }
 
 /**
