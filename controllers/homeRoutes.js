@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Account, Appointment, Employee } = require('../models');
 const withAuth = require('../utils/auth');
+const helpers = require('../utils/jsHelp.js')
 
 // renders the homepage
 router.get('/', async (req, res) => {
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
 
         // serialize data so the tamplate can read it
         const appointments = appointmentData.map((appointment) =>
-        appointment.get ({ plain: true }));
+            appointment.get({ plain: true }));
 
         // pass serialized data and session flag into template
         res.render('index', {
@@ -34,7 +35,7 @@ router.get('/profile', withAuth, async (req, res) => {
     try {
         // find logged in user based on the session ID
         const accountData = await Account.findByPk(req.session.id, {
-            include: [{ model: Appointment  }]
+            include: [{ model: Appointment }]
         })
 
         // serialize data for template
@@ -81,15 +82,20 @@ router.get('/signup', (req, res) => {
 
 router.get('/calendar', async (req, res) => {
     //if (req.session.logged_in) {
-        //res.render('calendar');
+    //res.render('calendar');
     //} else {
-        //res.redirect('/login');
+    //res.redirect('/login');
     //}
     try {
         const employeeData = await Employee.findAll();
         const employees = employeeData.map((employee) => employee.get({ plain: true }));
+        console.log(condenseScheduleObjWeeks([employees[0].week1, employees[0].week2, employees[0].week3, employees[0].week4]))
+        // let times = employees.map((employee) => condenseScheduleObjWeeks([employee.week1, employee.week2, employee.week3, employee.week4]))
+        // console.log(times)
 
-        res.render('calendar', {employees});
+
+
+        res.render('calendar', { times });
     } catch (err) {
         res.status(500).json(err);
     }

@@ -25,7 +25,7 @@
                             1-2
                         </label>
                     </div>
-                    {{#each employees as |employee| }}
+                    {{#each times as |employee| }}
                     <div class="control">
                         <label class="radio">
                             <input type="radio" name="search-type" id="lyrics">
@@ -67,6 +67,17 @@
 
 
 <script>
+    //let employees = ("{{ employees }}")
+    //console.log(typeof employees)
+    //let employees = "{{employees}}";
+    //let something = JSON(employees)
+    //console.log(something)
+    //employees.forEach(element => {
+    //    console.log(element)
+    //});
+
+
+
     const nextYear = new Date().getFullYear() + 1;
     const myCalender = new CalendarPicker('#myCalendarWrapper', {
         // If max < min or min > max then the only available day will be today.
@@ -82,7 +93,7 @@
 
     const currentToDateString = document.getElementById('current-datestring');
     currentToDateString.textContent = myCalender.value.toDateString();
-
+    console.log(event)
 
     let scheduleDate;
     const modalLabel = $(".label")
@@ -111,6 +122,10 @@
         populateDate(currentValue);
 
     });
+
+    function getDatesTimeslots(date) {
+
+    }
 
 
 </script>
