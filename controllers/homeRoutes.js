@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Account, Appointment, Employee } = require('../models');
 const withAuth = require('../utils/auth');
+const helpers = require('../utils/jsHelp.js')
 
 // renders the homepage
 router.get('/', async (req, res) => {
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
 
         // serialize data so the tamplate can read it
         const appointments = appointmentData.map((appointment) =>
-        appointment.get ({ plain: true }));
+            appointment.get({ plain: true }));
 
         // pass serialized data and session flag into template
         res.render('index', {
@@ -82,6 +83,9 @@ router.get('/calendar', withAuth, async (req, res) => {
     try {
         const employeeData = await Employee.findAll();
         const employees = employeeData.map((employee) => employee.get({ plain: true }));
+        console.log(condenseScheduleObjWeeks([employees[0].week1, employees[0].week2, employees[0].week3, employees[0].week4]))
+        // let times = employees.map((employee) => condenseScheduleObjWeeks([employee.week1, employee.week2, employee.week3, employee.week4]))
+        // console.log(times)
 
         res.render('calendar', {
             employees,

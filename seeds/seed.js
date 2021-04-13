@@ -112,6 +112,7 @@ const makeBetterEmployeeData = (employeeDatums) => {
 
         betterEmployeeData.push(
             {
+                'id': element.id,
                 "name": element.name,
                 "job": element.job,
                 "slotHrs": element.timeslotLenHrs,
@@ -127,13 +128,12 @@ const makeBetterEmployeeData = (employeeDatums) => {
 
             }
         )
+        console.log(betterEmployeeData)
 
     })
     return betterEmployeeData
+
 }
-
-
-
 
 
 // testing();
