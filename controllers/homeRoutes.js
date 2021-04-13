@@ -73,23 +73,30 @@ router.get('/index', (req, res) => {
 });
 
 router.get('/info', (req, res) => {
-    res.render('info');
+    res.render('info', {
+        logged_in: req.session.logged_in
+    });
 });
+
 router.get('/signup', (req, res) => {
+    // if user already logged in, redirect request to another route
+    if (req.session.logged_in) {
+        res.redirect('profile');
+        return;
+    }
     res.render('signup');
 });
 
-router.get('/calendar', async (req, res) => {
-    //if (req.session.logged_in) {
-        //res.render('calendar');
-    //} else {
-        //res.redirect('/login');
-    //}
+router.get('/calendar', withAuth, async (req, res) => {
+    
     try {
         const employeeData = await Employee.findAll();
         const employees = employeeData.map((employee) => employee.get({ plain: true }));
 
-        res.render('calendar', {employees});
+        res.render('calendar', {
+            employees,
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
