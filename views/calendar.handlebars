@@ -106,11 +106,12 @@
         currentToDateString.textContent = currentValue.toDateString();
 
         scheduleDate = currentValue.getFullYear() + '-' + currentValue.getMonth() + '-' + currentValue.getDate();
+        localStorage.setItem("scheduleDate", scheduleDate);
         console.log(scheduleDate);
         modal.addClass('is-active');
         populateDate(currentValue);
 
     });
-
+    console.log()
 
 </script>
