@@ -30,25 +30,15 @@ router.get('/', async (req, res) => {
 });
 
 // renders your profile, use withAuth middleware to prevent access
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/profile', async (req, res) => {
     try {
-        // find logged in user based on the session ID
-        const accountData = await Account.findByPk(req.session.id, {
-            include: [{ model: Appointment  }]
-        })
+        const accountData = await Account.findByPk(req.session.id);
+        const accounts = accountData.map((account) => account.get({ plain: true }));
 
-        // serialize data for template
-        const account = accountData.get({ plain: true });
-
-        // render profile handlebars, otherwise redirect to login
-        if (req.session.logged_in) {
-            res.render('profile', {
-                ...account,
-                logged_in: true
-            });
-        } else {
-            res.redirect('/login');
-        }
+        res.render('calendar', {
+            accounts,
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
