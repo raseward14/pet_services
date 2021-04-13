@@ -1,11 +1,13 @@
-body {
-    background-color: hotpink;
-}
+
 
 .container {
 
     max-width: 700px; /* Maximum width */
     margin: 0 auto; /* Center it */
+  }
+
+  .content{ 
+      margin-left: 10%;
   }
 
   .container .content {
@@ -53,9 +55,11 @@ body {
 }
 
 form {
-    border: 2px solid lightgrey;
-
-
+    width: 100%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    background-color: #E8A87C;
 }
 
 h1 {
@@ -75,6 +79,10 @@ h1 {
     border-bottom: 2px solid black;
     display: block;
 
+}
+
+#gurus {
+    color: #E8A87C;
 }
 
 
