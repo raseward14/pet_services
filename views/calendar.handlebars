@@ -1,6 +1,6 @@
-<div class="modal is-active">
+<div class="modal" id="modal">
     <div class="modal-background"></div>
-    <div class="modal-content" id="modal">
+    <div class="modal-content">
         <div class="box search-box ">
             <form>
                 <div class="field">
@@ -25,6 +25,14 @@
                             1-2
                         </label>
                     </div>
+                    {{#each employees as |employee| }}
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="search-type" id="lyrics">
+                            {{employee.week1}}
+                        </label>
+                    </div>
+                    {{/each}}
                 </div>
                 <div class="control">
                     <button class="button is-custom" id="submit-query-btn">Book</button>
@@ -75,13 +83,33 @@
     const currentToDateString = document.getElementById('current-datestring');
     currentToDateString.textContent = myCalender.value.toDateString();
 
+
+    let scheduleDate;
+    const modalLabel = $(".label")
+
+    function populateDate(currentValue) {
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        let bookingMonth = months[currentValue.getMonth()];
+        modalLabel.text(bookingMonth + ' ' + currentValue.getDate() + ', ' + currentValue.getFullYear());
+    }
+    const closeM = $(".modal-close");
+    const modal = $(".modal");
+    closeM.click(function closeModal() {
+
+        modal.removeClass("is-active");
+
+    })
+
     myCalender.onValueChange((currentValue) => {
         currentDateElement.textContent = currentValue;
         currentDayElement.textContent = currentValue.getDay();
         currentToDateString.textContent = currentValue.toDateString();
 
-        let scheduleDate = currentValue.getFullYear() + '-' + currentValue.getMonth() + '-' + currentValue.getDate();
+        scheduleDate = currentValue.getFullYear() + '-' + currentValue.getMonth() + '-' + currentValue.getDate();
         console.log(scheduleDate);
+        modal.addClass('is-active');
+        populateDate(currentValue);
+
     });
 
 
