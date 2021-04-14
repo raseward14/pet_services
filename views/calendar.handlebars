@@ -97,7 +97,7 @@
     const modal = $(".modal");
     closeM.click(function closeModal() {
 
-        modal.removeClass("is-active");
+
         function deleteChild() {
             let childrem = document.getElementById("times");
             let first = children.firstElementChild;
@@ -106,6 +106,7 @@
                 first = children.firstElementChild;
             }
         }
+        modal.removeClass("is-active");
 
 
     })
