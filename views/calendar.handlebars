@@ -25,8 +25,8 @@
                     </div>
                 </div>
                 <div class="control">
-                    <button class="button is-custom" id="submit-query-btn">Book</button>
-                    <button class="button is-custom" id="auth-btn">Cancel</button>
+                    <button class="button is-custom" id="book-btn">Book</button>
+                    <button class="button is-custom" id="cancel-btn">Cancel</button>
                 </div>
             </form>
         </div>
@@ -54,6 +54,7 @@
 <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>
 <script src="/js/calander.js"></script>
+<script src="/js/booking.js"></script>
 
 
 <script>
@@ -95,21 +96,27 @@
     }
     const closeM = $(".modal-close");
     const modal = $(".modal");
+    const cancel = $("#cancel-btn");
     closeM.click(function closeModal() {
-
-
-        function deleteChild() {
-            let childrem = document.getElementById("times");
-            let first = children.firstElementChild;
-            while (first) {
-                first.remove();
-                first = children.firstElementChild;
-            }
-        }
         modal.removeClass("is-active");
+    });
 
+    cancel.click(function closeModal() {
+        modal.removeClass("is-active");
+    });
 
-    })
+    function closeModal() {
+        modal.removeClass("is-active");
+    }
+
+    function deleteChild() {
+        let children = document.getElementById("times");
+        let first = children.firstElementChild;
+        while (first) {
+            first.remove();
+            first = children.firstElementChild;
+        }
+    }
 
     let times = document.getElementById('times');
 
@@ -121,6 +128,7 @@
         scheduleDate = currentValue.getFullYear() + '-' + currentValue.getMonth() + '-' + currentValue.getDate();
         localStorage.setItem("scheduleDate", scheduleDate);
         console.log(scheduleDate);
+        deleteChild();
         modal.addClass('is-active');
         populateDate(currentValue);
         getDatesTimeslots(scheduleDate)
@@ -136,17 +144,17 @@
                         let options = data[keys];
                         console.log(options.length);
                         for (let i = 0; i < options.length; i++) {
-                            //console.log(data.scheduleDate[i]);
-                            let newLabel = document.createElement('label');
-                            newLabel.classList.add("radio");
-                            newLabel.textContent = options[i];
-                            let newInput = document.createElement('input');
-
-                            newInput.type = "radio";
-                            newInput.name = "slots";
-                            times.appendChild(newLabel);
-                            newLabel.appendChild(newInput);
-
+                        //console.log(data.scheduleDate[i]);
+                        let newLabel = document.createElement('label');
+                        newLabel.classList.add("radio");
+                        newLabel.textContent = options[i];
+                        let newInput = document.createElement('input');
+                        newInput.type = "radio";
+                        newInput.name = "slots";
+                        newInput.value = options[i];
+                        newInput.setAttribute("id", "slots" + `${options[i]}`);
+                        times.appendChild(newLabel);
+                        newLabel.appendChild(newInput);
                         }
                     }
                 }
