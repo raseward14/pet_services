@@ -7,32 +7,22 @@
                     <label class="label">Book a service</label>
                 </div>
                 <div class="field">
-                    <div class="control">
+                    <div class="control" id="services">
                         <label class="radio">
+                            Dog Walker
                             <input type="radio" name="search-type" id="lyrics">
-                            9-10
+
                         </label>
                         <label class="radio" id="song-label">
+                             Dog Grooming
                             <input type="radio" name="search-type" id="song">
-                            10-11
-                        </label>
-                        <label class="radio" id="album-label">
-                            <input type="radio" name="search-type" id="album">
-                            12-1
-                        </label>
-                        <label class="radio" id="artist-label">
-                            <input type="radio" name="search-type" id="artists">
-                            1-2
+
                         </label>
                     </div>
-                    {{#each times as |employee| }}
-                    <div class="control">
-                        <label class="radio">
-                            <input type="radio" name="search-type" id="lyrics">
-                            {{employee.week1}}
-                        </label>
+                </div>
+                <div class="field">
+                    <div class="control" id="times">
                     </div>
-                    {{/each}}
                 </div>
                 <div class="control">
                     <button class="button is-custom" id="submit-query-btn">Book</button>
@@ -108,8 +98,19 @@
     closeM.click(function closeModal() {
 
         modal.removeClass("is-active");
+        function deleteChild() {
+            let childrem = document.getElementById("times");
+            let first = children.firstElementChild;
+            while (first) {
+                first.remove();
+                first = children.firstElementChild;
+            }
+        }
+
 
     })
+
+    let times = document.getElementById('times');
 
     myCalender.onValueChange((currentValue) => {
         currentDateElement.textContent = currentValue;
@@ -131,7 +132,21 @@
                 console.log(data);
                 for (const keys in data) {
                     if (keys === scheduleDate) {
-                        console.log('They match');
+                        let options = data[keys];
+                        console.log(options.length);
+                        for (let i = 0; i < options.length; i++) {
+                            //console.log(data.scheduleDate[i]);
+                            let newLabel = document.createElement('label');
+                            newLabel.classList.add("radio");
+                            newLabel.textContent = options[i];
+                            let newInput = document.createElement('input');
+
+                            newInput.type = "radio";
+                            newInput.name = "slots";
+                            times.appendChild(newLabel);
+                            newLabel.appendChild(newInput);
+
+                        }
                     }
                 }
             })
