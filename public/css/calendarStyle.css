@@ -139,3 +139,7 @@
   #calendar #navigation-wrapper button:first-of-type {
     transform: rotate(180deg);
   }
+
+  #example {
+    display: none;
+  }
