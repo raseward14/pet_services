@@ -54,7 +54,10 @@
     cursor: pointer;
 }
 
-form {
+.login-form,
+#signUp,
+#info-form
+ {
     position: absolute;
     top: 78px;
     background: rgb(0, 0, 0);
@@ -106,6 +109,10 @@ h1 {
     font-size: 15px;
 }
 
+#userInfo {
+    margin-top: 55%;
+    margin-left: 3%;
+}
 
 
 
