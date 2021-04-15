@@ -59,7 +59,7 @@
 #info-form
  {
     position: absolute;
-    top: 78px;
+    
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.5);
     color: #f1f1f1; /* Grey text */
@@ -118,6 +118,24 @@ h1 {
     opacity: 50%;
     margin-left: 35%;
 }
+
+.parallax {
+    /* The image used */
+    background-image: url("../images/gabedog.jpeg");
+  
+    /* Set a specific height */
+    min-height: 500px;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg1 {
+      height: 700px;
+  }
 
 
 
