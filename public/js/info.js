@@ -3,7 +3,7 @@ let petName = document.getElementById("dog-name");
 let petGender = document.getElementById("dog-gender");
 let petBirthday = document.getElementById("dog-birthday");
 let petBreed = document.getElementById("dog-breed");
-let petList = document.getElementById("pet-list")
+let petList = document.getElementById("pet-list");
 
 // on click input field disappears
 document.getElementById("info-btn").addEventListener("click", function (event) {
@@ -11,7 +11,7 @@ document.getElementById("info-btn").addEventListener("click", function (event) {
   const infoDiv = document.querySelector(".dogInfo");
   infoDiv.style.display = "hidden";
   const infoForm = document.getElementById("info-form");
-  infoForm.style.display = "none";
+  infoForm.style.display = "hidden";
   storePet();
 });
 
@@ -56,17 +56,18 @@ function renderPets() {
   var myPets = savedPets();
   // sets pet-list innerHTML to empty
   petList.innerHTML = '';
+
   console.log(myPets);
   // for loop creating pet list
   for(let i=0; i < myPets.length; i++) {
     // each pet has an index in array
     var aPet = document.createElement('li');
-    aPet.textContent = myPets[i].name + ' ' + myPets[i].gender + ' ' +  myPets[i].birthday + ' ' + myPets[i].breed;
-    aPet.setAttribute('data-index', i);
+    aPet.textContent = `Name: ${myPets[i].name}, Gender: ${myPets[i].gender}, Birthday: ${myPets[i].birthday}, Breed: ${myPets[i].breed}`;
+    aPet.setAttribute('data-index', i)
     aPet.classList.add('pet');
+    console.log(aPet);
+   
     // append the list item to the highscores array
     petList.prepend(aPet);
   }
-  // reloads page with pet list
-  // window.location.href = "info.handlebars";
 }
