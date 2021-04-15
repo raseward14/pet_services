@@ -4,14 +4,14 @@ document.getElementById("book-btn").addEventListener("click", function(event) {
   let timeSlotToRemove = figureWhatTime();
 
   console.log(typeof timeSlotToRemove);
-  if (typeOfService !== undefined && timeSlotToRemove !== undefined) {
-    const removeTime = await fetch('/api/schedule/dates', {
-      method: 'DELETE',
-      where:
-      body: JSON.stringify({}),
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
+  //if (typeOfService !== undefined && timeSlotToRemove !== undefined) {
+    //const removeTime = await fetch('/api/schedule/dates', {
+      //method: 'DELETE',
+      //where:
+      //body: JSON.stringify({}),
+      //headers: { 'Content-Type': 'application/json' },
+    //});
+  //}
 })
 
 function figureWhatService() {
