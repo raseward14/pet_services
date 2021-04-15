@@ -1,10 +1,10 @@
-<div class="dogInfo">
+<div class="dogInfo" onclick="displayHide()">
   <div class="row">
     <div class="col-4">
 
     </div>
     <div class="col-4">
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" id="info-form">
         <div class="form-row">
           <div class="col-md-6 mb-3">
             <label for="validationCustom01">Dog name</label>
@@ -157,7 +157,7 @@
         </div>
         <div class="form-group">
         </div>
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit" id="info-btn">Submit form</button>
       </form>
     </div>
     <div class="col-4">
@@ -167,3 +167,65 @@
 
 </div>
 <img src="/images/gabedog.jpeg" alt="Notebook" style="width:100%;">
+
+<div class="row" id="profile">
+    <div class="col-5">
+        <img src="./images/brett.jpeg" alt="Brett">
+    </div>
+
+    <div class="col-1">
+
+    </div>
+
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12">
+                <h1>Welcome, {{name}}</h1>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, maiores veritatis pariatur
+                voluptatem expedita quidem culpa! Sint autem animi ipsam asperiores enim ratione optio sed
+                vitae! Culpa voluptatem libero ab. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Id vitae doloribus tempora doloremque ipsum reprehenderit, excepturi, ullam corporis sunt
+                maiores corrupti culpa aperiam recusandae voluptatibus quasi, rerum quos repellendus facere?
+
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. In atque reprehenderit id est at
+                possimus sed, molestiae enim qui et odit doloremque quos, doloriblaudantium iusto sit
+                commodi voluptatibus debitis.lore</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<span class="line"></span>
+<br>
+<div class="row">
+    <br>
+    <div class="col-1">
+
+    </div>
+
+    <div class="col-4">
+        <br>
+        <h3>Book a service</h3>
+        <br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis repudiandae, qui numquam cupiditate deserunt corporis officiis. Magni in consequatur labore natus, unde ullam neque deserunt ea omnis voluptas fuga id.</p>
+    </div>
+
+    <div class="col-2">
+
+    </div>
+
+    <div class="col-4">
+        <br>
+        <h3>View personal calendar</h3>
+        <br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis repudiandae, qui numquam cupiditate deserunt corporis officiis. Magni in consequatur labore natus, unde ullam neque deserunt ea omnis voluptas fuga id.</p>
+    </div>
+
+    <div class="col-1">
+
+    </div>
+</div>
+
+<script src="/js/info.js"></script>

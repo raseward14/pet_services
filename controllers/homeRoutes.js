@@ -64,9 +64,10 @@ router.get('/index', (req, res) => {
 });
 
 router.get('/info', (req, res) => {
-    res.render('info', {
-        logged_in: req.session.logged_in
-    });
+    //res.render('info', {
+        //logged_in: req.session.logged_in
+    //});
+    res.render('info');
 });
 
 router.get('/signup', (req, res) => {
