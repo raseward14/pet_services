@@ -1,4 +1,4 @@
-function favTutorial() {
+
   const signupFormHandler = async (event) => {
     event.preventDefault();
 
@@ -9,10 +9,15 @@ function favTutorial() {
     if (name && petName && email && password) {
       const response = await fetch('/api/users', {
         method: 'POST',
-        body: JSON.stringify({ name: name, email: email, petName: petName, role: "user", password: password }),
+        body: JSON.stringify({ name: name, email: email, petName: petName, role: "user", password}),
         headers: { 'Content-Type': 'application/json' },
       });
-
+      let user = {
+        name: name,
+        email: email,
+        petname: petName
+      }
+      localStorage.setItem("user", JSON.stringify(user));
       if (response.ok) {
         document.location.replace('/info');
       } else {
@@ -20,8 +25,8 @@ function favTutorial() {
       }
     }
   };
-}
+
   document
   .querySelector('.submit')
-  .addEventListener('click', favTutorial());
+  .addEventListener('click', signupFormHandler);
 
