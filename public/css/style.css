@@ -126,8 +126,23 @@ h1 {
 .parallax {
     /* The image used */
     background-image: url("../images/gabedog.jpeg");
+    
+
+  
+    /* Set a specific height */
+    min-height: 500px;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .parallax.bg1 {
+    /* The image used */
     background-image: url("../images/dog41.jpg");
-    background-image: url("../images/dog6.jpeg");
+    
 
   
     /* Set a specific height */
