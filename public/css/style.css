@@ -67,6 +67,10 @@
     padding: 20px; /* Some padding */
 }
 
+#loginformid {
+    top: 200px;
+}
+
 #signUp {
     margin-left: 15%;
 }
