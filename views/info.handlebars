@@ -8,14 +8,14 @@
         <div class="form-row">
           <div class="col-md-6 mb-3">
             <label for="validationCustom01">Dog name</label>
-            <input type="text" class="form-control" id="validationCustom01" required>
+            <input type="text" class="form-control" id="dog-name" required>
             <div class="valid-feedback">
               Looks good!
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="validationCustom02">Gender</label>
-            <input type="text" class="form-control" id="validationCustom02" required>
+            <input type="text" class="form-control" id="dog-gender" required>
             <div class="valid-feedback">
               Looks good!
             </div>
@@ -24,11 +24,11 @@
         <div class="form-row">
           <div class="col-md-6 mb-3">
             <label for="validationCustom03">Birthday</label>
-            <input type="text" class="form-control" id="validationCustom03" required>
+            <input type="text" class="form-control" id="dog-birthday" required>
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationCustom04">Breed</label>
-            <select class="custom-select" id="validationCustom04" required>
+            <select class="custom-select" id="dog-breed" required>
               <option selected disabled value="">Choose...</option>
               <option>Affenpinscher</option>
               <option>Afghan Hound</option>
@@ -160,12 +160,13 @@
         <button class="btn btn-primary" type="submit" id="info-btn">Submit form</button>
       </form>
     </div>
-    <div class="col-4">
-
-    </div>
+    
   </div>
 
 </div>
+<div class="form-row col-md-8">
+      <ul id="pet-list"></ul>
+    </div>
 <img src="/images/gabedog.jpeg" alt="Notebook" style="width:100%;">
 
 <div class="row" id="profile">
