@@ -2,10 +2,10 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection.js');
 const { Account } = require('../../models');
 
-// /api/
-router.get('/:id', async (req, res) => {
+// /api/users/:id
+router.get('/info', async (req, res) => {
   try{
-    const user = await Account.findByPk(req.params.id);
+    const user = await Account.findAll();
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
