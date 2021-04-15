@@ -5,13 +5,14 @@ const { Account } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     const userData = await Account.create(req.body);
-console.log(userData);
+    console.log(userData);
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+
     });
+    res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -29,7 +30,7 @@ router.post('/login', async (req, res) => {
     }
     console.log(userData);
     console.log(req.body.password);
-    
+
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
