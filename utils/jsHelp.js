@@ -123,10 +123,27 @@ function getNameAndTimeSlotsForDay(date, employees) {
 }
 
 function makeTimeslotsIntoTimes(timeslots, start, breakTime) {
-
+    let returnArr = []
+    for (let index = 0; index < timeslots.length; index++) {
+        const element = timeslots[index];
+        if (element < 2) {
+            returnArr.push(element + 9)
+        } else {
+            returnArr.push(element + 10)
+        }
+    }
 }
-function makeTimesIntoTimeSlots(timeslots, start, breakTime) {
 
+function makeTimesIntoTimeSlots(timeslots, start, breakTime) {
+    let returnArr = []
+    for (let index = 0; index < timeslots.length; index++) {
+        const element = timeslots[index];
+        if (element < 12) {
+            returnArr.push(element - 9)
+        } else {
+            returnArr.push(element - 10)
+        }
+    }
 }
 
 
