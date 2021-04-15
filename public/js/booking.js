@@ -4,6 +4,7 @@ document.getElementById("book-btn").addEventListener("click", function(event) {
   let timeSlotToRemove = figureWhatTime();
 
   console.log(timeSlotToRemove);
+  let person = JSON.parse(localStorage.getItem("user"));
   //if (typeOfService !== undefined && timeSlotToRemove !== undefined) {
     //const removeTime = await fetch('/api/schedule/dates', {
       //method: 'DELETE',
