@@ -10,12 +10,12 @@
                     <div class="control" id="services">
                         <label class="radio">
                             Dog Walker
-                            <input type="radio" name="search-type" id="lyrics">
+                            <input type="radio" name="service-type" id="walk">
 
                         </label>
                         <label class="radio" id="song-label">
                              Dog Grooming
-                            <input type="radio" name="search-type" id="song">
+                            <input type="radio" name="service-type" id="groom">
 
                         </label>
                     </div>
@@ -105,9 +105,6 @@
         modal.removeClass("is-active");
     });
 
-    function closeModal() {
-        modal.removeClass("is-active");
-    }
 
     function deleteChild() {
         let children = document.getElementById("times");

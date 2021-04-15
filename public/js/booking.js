@@ -1,9 +1,28 @@
 document.getElementById("book-btn").addEventListener("click", function(event) {
-  //event.preventDefault();
-
+  event.preventDefault();
+  let typeOfService = figureWhatService();
   let timeSlotToRemove = figureWhatTime();
-  console.log(timeSlotToRemove);
+
+  console.log(typeof timeSlotToRemove);
+  if (typeOfService !== undefined && timeSlotToRemove !== undefined) {
+    const removeTime = await fetch('/api/schedule/dates', {
+      method: 'DELETE',
+      where:
+      body: JSON.stringify({}),
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 })
+
+function figureWhatService() {
+  if (document.querySelector("#walk").checked === true) {
+    return "walk";
+  } else if (document.querySelector("#groom").checked === true) {
+    return "groom";
+  } else {
+    return alert('Please Select a Service');
+  }
+}
 
 function figureWhatTime() {
   if (document.querySelector("#slots0").checked === true) {
