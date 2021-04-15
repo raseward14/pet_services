@@ -8,7 +8,7 @@ router.get('/dates', async (req, res) => {
     const employees = await Employee.findAll();
 
     const times = employees.map((employee) => employee.get({ plain: true }));
-    res.status(200).json(helpers.dbScheduleToObj(times[0].week1));
+    res.status(200).json(helper.simplifyTimeSlots(times));
   } catch (err) {
     res.status(500).json(err);
   }
