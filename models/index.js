@@ -13,16 +13,16 @@ Appointment.belongsTo(Account, {
 
 });
 
-Employee.hasMany(Appointment, {
-    foreignKey: 'employee_id',
-    onDelete: 'CASCADE',
+// Employee.hasMany(Appointment, {
+//     foreignKey: 'employee_id',
+//     onDelete: 'CASCADE',
 
-});
+// });
 
-Employee.belongsTo(Account, {
-    foreignKey: 'employee_id',
+// Employee.belongsTo(Account, {
+//     foreignKey: 'id',
 
-});
+// });
 
 
 module.exports = { Employee, Account, Appointment };

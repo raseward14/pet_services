@@ -14,14 +14,15 @@ const appointmentData = require("./appointmentData.json");
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
 
-    let betterEmployeeData;
+    // let betterEmployeeData;
     // console.log(betterEmployeeData)
-    betterEmployeeData = makeBetterEmployeeData(employeeData)
+    // betterEmployeeData = makeBetterEmployeeData(employeeData)
+
     // console.log(employeeData)
     // console.log(betterEmployeeData)
 
-
-    await Employee.bulkCreate(betterEmployeeData, {
+    let betterBetterEmployeeData = makeBetterBetterEmployeeData(employeeData)
+    await Employee.bulkCreate(betterBetterEmployeeData, {
         //Makes creation non-parallel, so it's deterministic.
         //individualHooks: true,
         returning: true,
@@ -43,6 +44,64 @@ const seedDatabase = async () => {
 
 seedDatabase()
 //work for 8 or more hours and you get a paid lunch.
+
+const makeBetterBetterEmployeeData = (employeeDatums) => {
+    let realid = 1
+    let startDate = new Date(today)
+    let betterBetterEmployeeData = []
+    employeeDatums.forEach(element => {
+        console.log(element.id)
+        let start = parseInt(element.shiftStart);
+        let end = parseInt(element.shiftEnd);
+        //figure out lunch and timeslots
+        let lunch;
+        let milTimeSlots = []
+        let totalSlots;
+        if (start < 11 && end > 12) {
+            // console.log("They get a lunch!")
+            totalSlots = end - start - 1
+            lunch = true;
+        } else {
+            totalSlots = end - start
+            lunch = false;
+        }
+
+        for (let milTime = start; milTime < end; milTime++) {
+            console.log(milTime)
+            milTimeSlots.push(milTime)
+            //if lunch hour is after this one.
+            if (milTime == 10) {
+                milTime++
+            }
+        }
+
+        let milTimeSlotsString = milTimeSlots.join(",")
+
+        for (let integer = 1; integer < 501; integer++) {
+            console.log(milTimeSlotsString)
+            let perDayTimes;
+            if (element.daysWorking.includes(startDate.getDay())) {
+                perDayTimes = milTimeSlotsString;
+            } else {
+                perDayTimes = null;
+            }
+            betterBetterEmployeeData.push({
+                id: realid,
+                accountId: 1,
+                employeeId: element.id,
+                date: startDate.getFullYear() + '-' + (startDate.getMonth()) + '-' + startDate.getDate(),
+                milTimeSlots: perDayTimes
+            })
+            realid++
+            startDate.setDate(startDate.getDate() + 1)
+        }
+
+
+    })
+    return betterBetterEmployeeData;
+
+}
+
 
 const makeBetterEmployeeData = (employeeDatums) => {
     let betterEmployeeData = []
