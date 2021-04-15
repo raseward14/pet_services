@@ -156,7 +156,8 @@ h1 {
     background-size: cover;
   }
 
-  .bg1 {
+  .bg1,
+  .bg2 {
       height: 700px;
   }
 
@@ -181,9 +182,5 @@ h1 {
     background-size: cover;
   }
 
-  h4 {
-      text-align: center;
-  }
-
-
+ 
 
