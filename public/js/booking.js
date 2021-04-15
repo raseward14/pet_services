@@ -3,7 +3,7 @@ document.getElementById("book-btn").addEventListener("click", function(event) {
   let typeOfService = figureWhatService();
   let timeSlotToRemove = figureWhatTime();
 
-  console.log(typeof timeSlotToRemove);
+  console.log(timeSlotToRemove);
   //if (typeOfService !== undefined && timeSlotToRemove !== undefined) {
     //const removeTime = await fetch('/api/schedule/dates', {
       //method: 'DELETE',
@@ -25,22 +25,12 @@ function figureWhatService() {
 }
 
 function figureWhatTime() {
-  if (document.querySelector("#slots9").checked === true) {
-    return 0;
-  } else if (document.querySelector("#slots10").checked === true) {
-    return 1;
-  } else if (document.querySelector("#slots12").checked === true) {
-    return 2;
-  } else if (document.querySelector("#slots13").checked === true) {
-    return 3;
-  } else if (document.querySelector("#slots14").checked === true) {
-    return 4;
-  } else if (document.querySelector("#slots15").checked === true) {
-    return 5;
-  } else if (document.querySelector("#slots16").checked === true) {
-    return 6;
-  } else {
-    return alert('Please Select an available Time Slot');
+  const ele = document.getElementsByName("slots");
+  console.log(ele);
+  for (j = 0; j < ele.length; j++) {
+    if (ele[j].checked === true) {
+      return ele[j].value;
+    }
   }
 }
 

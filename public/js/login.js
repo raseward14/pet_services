@@ -12,7 +12,8 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/calendar');
+      localStorage.setItem('user', email);
+      document.location.replace('/info');
     } else {
       alert('Failed to log in');
     }
