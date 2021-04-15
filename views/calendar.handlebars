@@ -136,25 +136,25 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                for (const keys in data) {
-                    if (keys === scheduleDate) {
-                        let options = data[keys];
-                        console.log(options.length);
-                        for (let i = 0; i < options.length; i++) {
+                //for (const keys in data) {
+                    //if (keys === scheduleDate) {
+                        //let options = data[keys];
+                        //console.log(options.length);
+                        //for (let i = 0; i < options.length; i++) {
                         //console.log(data.scheduleDate[i]);
-                        let newLabel = document.createElement('label');
-                        newLabel.classList.add("radio");
-                        newLabel.textContent = options[i];
-                        let newInput = document.createElement('input');
-                        newInput.type = "radio";
-                        newInput.name = "slots";
-                        newInput.value = options[i];
-                        newInput.setAttribute("id", "slots" + `${options[i]}`);
-                        times.appendChild(newLabel);
-                        newLabel.appendChild(newInput);
-                        }
-                    }
-                }
+                        //let newLabel = document.createElement('label');
+                        //newLabel.classList.add("radio");
+                        //newLabel.textContent = options[i];
+                        //let newInput = document.createElement('input');
+                        //newInput.type = "radio";
+                        //newInput.name = "slots";
+                        //newInput.value = options[i];
+                        //newInput.setAttribute("id", "slots" + `${options[i]}`);
+                        //times.appendChild(newLabel);
+                        //newLabel.appendChild(newInput);
+                        //}
+                    //}
+                //}
             })
 
     }

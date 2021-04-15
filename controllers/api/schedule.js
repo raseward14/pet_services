@@ -14,8 +14,8 @@ router.get('/dates', async (req, res) => {
   }
 })
 
-router.get('/dates', (req, res) => {
+//router.get('/dates', (req, res) => {
 
-})
+//})
 
 module.exports = router;
