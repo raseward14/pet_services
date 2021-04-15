@@ -73,7 +73,7 @@ router.get('/info', (req, res) => {
 router.get('/signup', (req, res) => {
     // if user already logged in, redirect request to another route
     if (req.session.logged_in) {
-        res.redirect('profile');
+        res.redirect('info');
         return;
     }
     res.render('signup');
@@ -90,7 +90,7 @@ router.get('/calendar', (req, res) => {
 
         //res.render('calendar', {
             //employees,
-            //logged_in: req.session.logged_in
+            // logged_in: req.session.logged_in
         //});
     //} catch (err) {
         //res.status(500).json(err);
