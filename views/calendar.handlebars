@@ -7,36 +7,26 @@
                     <label class="label">Book a service</label>
                 </div>
                 <div class="field">
-                    <div class="control">
+                    <div class="control" id="services">
                         <label class="radio">
-                            <input type="radio" name="search-type" id="lyrics">
-                            9-10
+                            Dog Walker
+                            <input type="radio" name="service-type" id="walk">
+
                         </label>
                         <label class="radio" id="song-label">
-                            <input type="radio" name="search-type" id="song">
-                            10-11
-                        </label>
-                        <label class="radio" id="album-label">
-                            <input type="radio" name="search-type" id="album">
-                            12-1
-                        </label>
-                        <label class="radio" id="artist-label">
-                            <input type="radio" name="search-type" id="artists">
-                            1-2
+                             Dog Grooming
+                            <input type="radio" name="service-type" id="groom">
+
                         </label>
                     </div>
-                    {{#each times as |employee| }}
-                    <div class="control">
-                        <label class="radio">
-                            <input type="radio" name="search-type" id="lyrics">
-                            {{employee.week1}}
-                        </label>
+                </div>
+                <div class="field">
+                    <div class="control" id="times">
                     </div>
-                    {{/each}}
                 </div>
                 <div class="control">
-                    <button class="button is-custom" id="submit-query-btn">Book</button>
-                    <button class="button is-custom" id="auth-btn">Cancel</button>
+                    <button class="button is-custom" id="book-btn">Book</button>
+                    <button class="button is-custom" id="cancel-btn">Cancel</button>
                 </div>
             </form>
         </div>
@@ -64,6 +54,7 @@
 <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>
 <script src="/js/calander.js"></script>
+<script src="/js/booking.js"></script>
 
 
 <script>
@@ -105,11 +96,26 @@
     }
     const closeM = $(".modal-close");
     const modal = $(".modal");
+    const cancel = $("#cancel-btn");
     closeM.click(function closeModal() {
-
         modal.removeClass("is-active");
+    });
 
-    })
+    cancel.click(function closeModal() {
+        modal.removeClass("is-active");
+    });
+
+
+    function deleteChild() {
+        let children = document.getElementById("times");
+        let first = children.firstElementChild;
+        while (first) {
+            first.remove();
+            first = children.firstElementChild;
+        }
+    }
+
+    let times = document.getElementById('times');
 
     myCalender.onValueChange((currentValue) => {
         currentDateElement.textContent = currentValue;
@@ -119,6 +125,7 @@
         scheduleDate = currentValue.getFullYear() + '-' + currentValue.getMonth() + '-' + currentValue.getDate();
         localStorage.setItem("scheduleDate", scheduleDate);
         console.log(scheduleDate);
+        deleteChild();
         modal.addClass('is-active');
         populateDate(currentValue);
         getDatesTimeslots(scheduleDate)
@@ -131,7 +138,21 @@
                 console.log(data);
                 for (const keys in data) {
                     if (keys === scheduleDate) {
-                        console.log('They match');
+                        let options = data[keys];
+                        console.log(options.length);
+                        for (let i = 0; i < options.length; i++) {
+                        //console.log(data.scheduleDate[i]);
+                        let newLabel = document.createElement('label');
+                        newLabel.classList.add("radio");
+                        newLabel.textContent = options[i];
+                        let newInput = document.createElement('input');
+                        newInput.type = "radio";
+                        newInput.name = "slots";
+                        newInput.value = options[i];
+                        newInput.setAttribute("id", "slots" + `${options[i]}`);
+                        times.appendChild(newLabel);
+                        newLabel.appendChild(newInput);
+                        }
                     }
                 }
             })
