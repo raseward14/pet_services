@@ -1,4 +1,4 @@
-<div class="modal" id="modal">
+<div class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
         <div class="box search-box ">
@@ -144,7 +144,22 @@
                             //console.log(data.scheduleDate[i]);
                             let newLabel = document.createElement('label');
                             newLabel.classList.add("radio");
-                            newLabel.textContent = options[i];
+
+                            console.log(typeof options[i]);
+                            if (options[i] === "9" || options[i] === "10") {
+                                newLabel.textContent = options[i] + " AM";
+                            } else if (options[i] === "12") {
+                                newLabel.textContent = options[i] + " PM";
+                            } else if (options[i] === "13") {
+                                newLabel.textContent = "1 PM";
+                            } else if (options[i] === "14") {
+                                newLabel.textContent = "2 PM";
+                            } else if (options[i] === "15") {
+                                newLabel.textContent = "3 PM";
+                            } else if (options[i] === "16") {
+                                newLabel.textContent = "4 PM";
+                            }
+
                             let newInput = document.createElement('input');
                             newInput.type = "radio";
                             newInput.name = "slots";

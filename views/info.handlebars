@@ -1,21 +1,25 @@
+<section class="section parallax bg2">
 <div class="dogInfo">
   <div class="row">
     <div class="col-4">
 
+
+
     </div>
+
     <div class="col-4">
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" id="info-form">
         <div class="form-row">
           <div class="col-md-6 mb-3">
             <label for="validationCustom01">Dog name</label>
-            <input type="text" class="form-control" id="validationCustom01" required>
+            <input type="text" class="form-control" id="dog-name" required>
             <div class="valid-feedback">
               Looks good!
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="validationCustom02">Gender</label>
-            <input type="text" class="form-control" id="validationCustom02" required>
+            <input type="text" class="form-control" id="dog-gender" required>
             <div class="valid-feedback">
               Looks good!
             </div>
@@ -24,11 +28,11 @@
         <div class="form-row">
           <div class="col-md-6 mb-3">
             <label for="validationCustom03">Birthday</label>
-            <input type="text" class="form-control" id="validationCustom03" required>
+            <input type="text" class="form-control" id="dog-birthday" required>
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationCustom04">Breed</label>
-            <select class="custom-select" id="validationCustom04" required>
+            <select class="custom-select" id="dog-breed" required>
               <option selected disabled value="">Choose...</option>
               <option>Affenpinscher</option>
               <option>Afghan Hound</option>
@@ -95,75 +99,179 @@
               <option>English Springer Spaniel</option>
               <option>English Toy Spaniel</option>
               <option>Eskimo Dog</option>
-              <optionFinnish Spitz>
-                </option>
-                <option>Fox Terrier</option>
-                <option>Foxhound</option>
-                <option>French Bulldog</option>
-                <option>German Shepherd</option>
-                <option>German Shorthaired Pointer</option>
-                <option>German Wirehaired Pointer</option>
-                <option>Golden Retriever</option>
-                <option>Gordon Setter</option>
-                <option>Great Dane</option>
-                <option>Greyhound</option>
-                <option>Irish Setter</option>
-                <option>Irish Water Spaniel</option>
-                <option>Irish Wolfhound</option>
-                <option>Jack Russel Terrier</option>
-                <option>Japanese Spaniel</option>
-                <option>Keeshond</option>
-                <option>Kerry Blue Terrier</option>
-                <option>Komondor</option>
-                <option>Labrador Retriever</option>
-                <option>Lakeland Terrier</option>
-                <option>Maltese</option>
-                <option>Manchester Terrier</option>
-                <option>Mastiff</option>
-                <option>Mexican Hairless</option>
-                <option>Newfoundland</option>
-                <option>Norwegian Elkhound</option>
-                <option>Norwich Terrier</option>
-                <option>Otterhound</option>
-                <option>Papillon</option>
-                <option>Pekingese</option>
-                <option>Pointer</option>
-                <option>Pomeranian</option>
-                <option>Poodle</option>
-                <option>Pug</option>
-                <option>Puli</option>
-                <option>Rhodesian Ridgeback</option>
-                <option>Rottweiler</option>
-                <option>Saint bernard</option>
-                <option>Samoyed</option>
-                <option>Scottish Deerhound</option>
-                <option>Scottish Terrier</option>
-                <option>Shetland Sheepdog</option>
-                <option>Shih Tzu</option>
-                <option>Siberian Husky</option>
-                <option>Silky Terrier</option>
-                <option>Skye Terrier</option>
-                <option>Spitz</option>
-                <option>Vizsla</option>
-                <option>Weimaraner</option>
-                <option>Welsh Terrier</option>
-                <option>West Highland White Terrier</option>
-                <option>Whippet</option>
-                <option>YorkShire Terrier</option>
-                <option>Other</option>
+              <option>Finnish Spitz>
+              </option>
+              <option>Fox Terrier</option>
+              <option>Foxhound</option>
+              <option>French Bulldog</option>
+              <option>German Shepherd</option>
+              <option>German Shorthaired Pointer</option>
+              <option>German Wirehaired Pointer</option>
+              <option>Golden Retriever</option>
+              <option>Gordon Setter</option>
+              <option>Great Dane</option>
+              <option>Greyhound</option>
+              <option>Irish Setter</option>
+              <option>Irish Water Spaniel</option>
+              <option>Irish Wolfhound</option>
+              <option>Jack Russel Terrier</option>
+              <option>Japanese Spaniel</option>
+              <option>Keeshond</option>
+              <option>Kerry Blue Terrier</option>
+              <option>Komondor</option>
+              <option>Labrador Retriever</option>
+              <option>Lakeland Terrier</option>
+              <option>Maltese</option>
+              <option>Manchester Terrier</option>
+              <option>Mastiff</option>
+              <option>Mexican Hairless</option>
+              <option>Newfoundland</option>
+              <option>Norwegian Elkhound</option>
+              <option>Norwich Terrier</option>
+              <option>Otterhound</option>
+              <option>Papillon</option>
+              <option>Pekingese</option>
+              <option>Pointer</option>
+              <option>Pomeranian</option>
+              <option>Poodle</option>
+              <option>Pug</option>
+              <option>Puli</option>
+              <option>Rhodesian Ridgeback</option>
+              <option>Rottweiler</option>
+              <option>Saint bernard</option>
+              <option>Samoyed</option>
+              <option>Scottish Deerhound</option>
+              <option>Scottish Terrier</option>
+              <option>Shetland Sheepdog</option>
+              <option>Shih Tzu</option>
+              <option>Siberian Husky</option>
+              <option>Silky Terrier</option>
+              <option>Skye Terrier</option>
+              <option>Spitz</option>
+              <option>Vizsla</option>
+              <option>Weimaraner</option>
+              <option>Welsh Terrier</option>
+              <option>West Highland White Terrier</option>
+              <option>Whippet</option>
+              <option>YorkShire Terrier</option>
+              <option>Other</option>
             </select>
           </div>
 
         </div>
         <div class="form-group">
         </div>
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit" id="info-btn">Submit form</button>
       </form>
+
+      <div class="row">
+
+
+        <form class="login-form" id="userInfo">
+          <div class="form-group">
+            <label for="exampleInputEmail1" id="user-name">Name:</label>
+            <p class="userName">{{name}}</p>
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" id="user-email">Email:</label>
+            <p class="email">{{email}}</p>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Pet Info:</label>
+            <ul class="petList" id="pet-list"></ul>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Days Booked:</label>
+            <p class="booked"></p>
+          </div>
+
+
+        </form>
+      </div>
     </div>
+
     <div class="col-4">
 
     </div>
+
+
   </div>
 
 </div>
-<img src="/images/gabedog.jpeg" alt="Notebook" style="width:100%;">
+{{!-- <img src="/images/gabedog.jpeg" alt="Notebook" style="width:100%;"> --}}
+
+</section>
+
+
+<section class="section static">
+  <div class="row" id="profile">
+
+    <div class="col-5">
+      <img src="./images/brett.jpeg" alt="Brett">
+    </div>
+
+    <div class="col-1">
+
+    </div>
+
+    <div class="col-5">
+      <div class="row">
+        <div class="col-12">
+          <br>
+          <br>
+          <br>
+          <h1>Welcome, {{name}}</h1>
+          <br>
+          <p>My name is Brett Fitzpatrick and I am a professional dog walker. An interesting fact about me is that I am
+            the oldest of 10 siblings, so growing up with dogs in the house I was always the one in charge of walking
+            the dogs, training them to walk the walk and not pull. My passion for dogs continued to grow throughout my
+            childhood, so I decided to start my own dog walking business.
+
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1">
+
+    </div>
+  </div>
+</section>
+
+<section class="section parallax bg2"></section>
+
+<span class="line"></span>
+
+<div class="row">
+  <br>
+  <div class="col-4">
+
+  </div>
+
+  <div class="col-4">
+    <br>
+    <h2>How to book a service</h2>
+    <br>
+    <p>To schedule a service you can click the button below and you will be prompted with a calendar which will display times available and times not available. Once you book a time for us to walk your dog if you return to this page you will be able to view all the times you chose to..</p>
+    <br>
+
+
+
+    <a href="/calendar">
+      <button type="submit" class="btn btn-primary">View Calendar</button>
+    </a>
+    <br>
+    <br>
+    <br>
+  </div>
+
+  <div class="col-4">
+
+  </div>
+</div>
+</section>
+
+<script src="/js/info.js"></script>
