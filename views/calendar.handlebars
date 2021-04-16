@@ -141,7 +141,11 @@
                 for (const keys in data) {
                     if (keys === scheduleDate) {
                         let options = data[keys];
-                        console.log(options.length);
+                        console.log(options.length, "length");
+                        if (options.length === 0) {
+                            modal.removeClass('is-active')
+                            return
+                        }
                         for (let i = 0; i < options.length; i++) {
                             //console.log(data.scheduleDate[i]);
                             let newLabel = document.createElement('label');
@@ -170,6 +174,7 @@
                             times.appendChild(newLabel);
                             newLabel.appendChild(newInput);
                         }
+
                     }
                 }
             })

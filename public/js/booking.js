@@ -1,6 +1,6 @@
 let appointmentArray = [];
-document.getElementById("book-btn").addEventListener("click", function(event) {
-  event.preventDefault();
+document.getElementById("book-btn").addEventListener("click", function (event) {
+  // event.preventDefault();
   let typeOfService = figureWhatService();
   let timeSlotToRemove = figureWhatTime();
   makeAppointment(timeSlotToRemove)
@@ -9,11 +9,11 @@ document.getElementById("book-btn").addEventListener("click", function(event) {
   console.log(typeof timeSlotToRemove);
 
   //if (typeOfService !== undefined && timeSlotToRemove !== undefined) {
-    //const removeTime = await fetch('/api/schedule/dates', {
-      //method: 'DELETE',
-      //body: JSON.stringify({}),
-      //headers: { 'Content-Type': 'application/json' },
-    //});
+  //const removeTime = await fetch('/api/schedule/dates', {
+  //method: 'DELETE',
+  //body: JSON.stringify({}),
+  //headers: { 'Content-Type': 'application/json' },
+  //});
   //}
 })
 
@@ -35,6 +35,7 @@ function figureWhatTime() {
       return ele[j].value;
     }
   }
+  return alert('Please select a time')
 }
 
 async function makeAppointment(timeSlotToRemove) {
@@ -109,8 +110,8 @@ function deleteTimeSlot(timeSlotToRemove) {
     })
 
   //const remove = await fetch('api/schedule/', {
-    //method: 'PUT',
-    //body: JSON.stringify({})
+  //method: 'PUT',
+  //body: JSON.stringify({})
   //})
 }
 
