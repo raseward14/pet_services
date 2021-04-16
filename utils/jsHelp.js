@@ -47,30 +47,30 @@ function dbObjToString(dbObj) {
 
 //So this takes in an account ID, employee ID, date, timeslot, and schedule obj
 //And then makes a new appointment, and removes the timeslot from the schedule obj.
-async function scheduleAppt(accountIdParam, employeeIdParam, dateParam, timeslotParam, scheduleObj) {
+// async function scheduleAppt(accountIdParam, employeeIdParam, dateParam, timeslotParam, scheduleObj) {
 
-    await sequelize.sync({ force: true })((err) => res.json(err));
-    //works
-    const appt = await Appointment.create({
-        employeeId: employeeIdParam,
-        accountId: accountIdParam,
-        timeSlot: timeslotParam,
-        date: dateParam
-    }).catch((err) => console.log(err));
-    let scheduleDay = scheduleObj[dateParam]
-    scheduleDay = scheduleDay.filter(item => parseInt(item) !== timeslotParam)
-    scheduleObj[dateParam] = scheduleDay
-    Employee.update(
-        {
-            week1: dbObjToString(scheduleObj)
-        },
-        {
-            where: {
-                id: employeeIdParam
-            }
-        }
-    ).catch((err) => console.log(err))
-}
+//     await sequelize.sync({ force: true })((err) => res.json(err));
+//     //works
+//     const appt = await Appointment.create({
+//         employeeId: employeeIdParam,
+//         accountId: accountIdParam,
+//         timeSlot: timeslotParam,
+//         date: dateParam
+//     }).catch((err) => console.log(err));
+//     let scheduleDay = scheduleObj[dateParam]
+//     scheduleDay = scheduleDay.filter(item => parseInt(item) !== timeslotParam)
+//     scheduleObj[dateParam] = scheduleDay
+//     Employee.update(
+//         {
+//             week1: dbObjToString(scheduleObj)
+//         },
+//         {
+//             where: {
+//                 id: employeeIdParam
+//             }
+//         }
+//     ).catch((err) => console.log(err))
+// }
 
 // async function scheduelGoodAppt(userAccIdParam, emplIdParam, dateParam, milTimeSlot){
 //     await sequelize.sync({ force: true })((err) => res.json(err));
@@ -95,81 +95,113 @@ function simplifyTimeSlots(bigAssEmployeeThing) {
     return returnObj
 }
 
+//employeeId always 1
+async function scheduleAppt(accountParam, employeeParam, dateParam, milTimeSlot) {
+    // await sequelize.sync({ force: true })((err) => {
+    //     console.log(err);
+    //     res.json(err)
+    // });
+    //works
+    const appt = await Appointment.create({
+        employeeId: employeeParam,
+        accountId: accountParam,
+        timeSlot: milTimeSlot,
+        date: dateParam
+    }).catch((err) => console.log(err));
+
+    // let employeeDay = 
+    Employee.findOne({ where: { date: dateParam } }).then((employeeDay) => {
+        // console.log(employeeDay['milTimeSlots'])
+        employeeDay['milTimeSlots'] = employeeDay['milTimeSlots'].split(",").filter(item => parseInt(item) !== milTimeSlot).join(",")
+        // console.log(employeeDay['milTimeSlots'])
+        Employee.update(
+            {
+                milTimeSlots: employeeDay['milTimeSlots']
+            },
+            {
+                where: {
+                    date: dateParam
+                }
+            }
+        ).catch((err) => console.log(err))
+    }).catch((err) => console.log(err))
+
+}
 
 
 //pass in all weeks to this as an array to get back a more condensed version of itself
-function condenseScheduleObjWeeks(ArrOfScheduleObj) {
-    // let objArr = []
-    let bigObj = {}
-    for (let index = 0; index < ArrOfScheduleObj.length; index++) {
-        const scheduleObj = dbScheduleToObj(ArrOfScheduleObj[index]);
-        for (const key in scheduleObj) {
-            if (Object.hasOwnProperty.call(scheduleObj, key)) {
-                const timeSlotArr = scheduleObj[key];
-                if (!timeSlotArr) {
-                    bigObj[key] = false
-                } else {
-                    bigObj[key] = timeSlotArr
-                }
-            }
-        }
-        // objArr.push(element)
-    }
-    return bigObj
-    // console.log(bigObj)
-}
+// function condenseScheduleObjWeeks(ArrOfScheduleObj) {
+//     // let objArr = []
+//     let bigObj = {}
+//     for (let index = 0; index < ArrOfScheduleObj.length; index++) {
+//         const scheduleObj = dbScheduleToObj(ArrOfScheduleObj[index]);
+//         for (const key in scheduleObj) {
+//             if (Object.hasOwnProperty.call(scheduleObj, key)) {
+//                 const timeSlotArr = scheduleObj[key];
+//                 if (!timeSlotArr) {
+//                     bigObj[key] = false
+//                 } else {
+//                     bigObj[key] = timeSlotArr
+//                 }
+//             }
+//         }
+//         // objArr.push(element)
+//     }
+//     return bigObj
+//     // console.log(bigObj)
+// }
 
 //wants a plain array of employees  
-function getNameAndTimeSlotsForDay(date, employees) {
-    let returnArr = []
-    employees.forEach((employee) => {
-        let thing = condenseScheduleObjWeeks([employee.week1, employee.week2, employee.week3, employee.week4])
-        let arrOfHourlyTimeslots = [];
-        let start = 9;
-        let breakTime = 11;
-        let timeSlots = thing[date];
-        for (let index = 0; index < thing[date].length; index++) {
-            const element = thing[date][index];
+// function getNameAndTimeSlotsForDay(date, employees) {
+//     let returnArr = []
+//     employees.forEach((employee) => {
+//         let thing = condenseScheduleObjWeeks([employee.week1, employee.week2, employee.week3, employee.week4])
+//         let arrOfHourlyTimeslots = [];
+//         let start = 9;
+//         let breakTime = 11;
+//         let timeSlots = thing[date];
+//         for (let index = 0; index < thing[date].length; index++) {
+//             const element = thing[date][index];
 
-        }
+//         }
 
-        let newObj = {
-            name: employee.name,
-            timeSlots: thing[date],
-            empId: employee["id"]
-        };
-        returnArr.push(newObj)
-        // console.log(employee.name)
+//         let newObj = {
+//             name: employee.name,
+//             timeSlots: thing[date],
+//             empId: employee["id"]
+//         };
+//         returnArr.push(newObj)
+//     });
+//     return returnArr
+// }
 
-        // console.log(thing)
-        // newObj[employee.name] = thing[date]
-    });
-    return returnArr
-}
+// function makeTimeslotsIntoTimes(timeslots, start, breakTime) {
+//     let returnArr = []
+//     for (let index = 0; index < timeslots.length; index++) {
+//         const element = timeslots[index];
+//         if (element < 2) {
+//             returnArr.push(element + 9)
+//         } else {
+//             returnArr.push(element + 10)
+//         }
+//     }
+// }
 
-function makeTimeslotsIntoTimes(timeslots, start, breakTime) {
-    let returnArr = []
-    for (let index = 0; index < timeslots.length; index++) {
-        const element = timeslots[index];
-        if (element < 2) {
-            returnArr.push(element + 9)
-        } else {
-            returnArr.push(element + 10)
-        }
-    }
-}
+// function makeTimesIntoTimeSlots(timeslots, start, breakTime) {
+//     let returnArr = []
+//     for (let index = 0; index < timeslots.length; index++) {
+//         const element = timeslots[index];
+//         if (element < 12) {
+//             returnArr.push(element - 9)
+//         } else {
+//             returnArr.push(element - 10)
+//         }
+//     }
+// }
 
-function makeTimesIntoTimeSlots(timeslots, start, breakTime) {
-    let returnArr = []
-    for (let index = 0; index < timeslots.length; index++) {
-        const element = timeslots[index];
-        if (element < 12) {
-            returnArr.push(element - 9)
-        } else {
-            returnArr.push(element - 10)
-        }
-    }
-}
+scheduleAppt(1, 1, "2021-3-15", 10)
+
+
 
 let testingStuff = [
     {
