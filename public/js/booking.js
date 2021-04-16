@@ -4,7 +4,7 @@ document.getElementById("book-btn").addEventListener("click", function(event) {
   let typeOfService = figureWhatService();
   let timeSlotToRemove = figureWhatTime();
   makeAppointment(timeSlotToRemove)
-  //deleteTimeSlot();
+  deleteTimeSlot(timeSlotToRemove);
 
   console.log(typeof timeSlotToRemove);
 
@@ -77,10 +77,37 @@ async function makeAppointment(timeSlotToRemove) {
     with: "Johnson"
   }
   appointmentArray.push(appDate);
-  localStorage.setItem("appointments", JSON.stringify(appointmentArray))
+  localStorage.setItem("appointments", JSON.stringify(appointmentArray));
 }
 
-function deleteTimeSlot() {
+async function deleteTimeSlot(timeSlotToRemove) {
+  let newTimes;
+  let appointmentDate = localStorage.getItem("scheduleDate");
+  fetch("http://localhost:3001/api/schedule/dates")
+    .then(response => response.json())
+    .then(data => {
+      for (const keys in data) {
+        if (keys === scheduleDate) {
+          let options = data[keys];
+          console.log(options);
+          newTimes = options.filter(option => option !== timeSlotToRemove);
+          console.log(newTimes);
+          let update = newTimes.join(",");
+          const remove = await fetch('api/schedule/', {
+            method: 'PUT',
+            body: JSON.stringify({
+              date: scheduleDate,
+              milTimeSlots: update
+            }),
+            headers: { 'Content-Type': 'application/json' },
+          });
+        }
+      }
+    });
 
+  //const remove = await fetch('api/schedule/', {
+    //method: 'PUT',
+    //body: JSON.stringify({})
+  //})
 }
 
