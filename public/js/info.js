@@ -5,6 +5,11 @@ let petBirthday = document.getElementById("dog-birthday");
 let petBreed = document.getElementById("dog-breed");
 let petList = document.getElementById("pet-list");
 
+let userName = document.getElementById("user-name");
+let userEmail = document.getElementById("user-email");
+let id = document.getElementById("user-id");
+
+
 // on click input field disappears
 document.getElementById("info-btn").addEventListener("click", function (event) {
   event.preventDefault();
@@ -16,7 +21,7 @@ document.getElementById("info-btn").addEventListener("click", function (event) {
 });
 
 // set pet info to local storage
-function storePet(Pet) {
+function storePet() {
   // array of pets
   var petArray = savedPets();
 
@@ -70,4 +75,33 @@ function renderPets() {
     // append the list item to the highscores array
     petList.prepend(aPet);
   }
+}
+
+function renderUser() {
+  // gets the user from local storage
+  var user = localStorage.getItem('user');
+
+  // if we have a user in local storage, JSON.parse into a js object, otherwise return an empty array
+  if (user !== null) {
+    user = JSON.parse(user);
+  } else {
+    user = [];
+  }
+
+  var aUserName = document.createElement('p');
+  var aUserEmail = document.createElement('p');
+
+  aUserName.textContent = user.name;
+  aUserEmail.textContent = user.email;
+
+  console.log(user);
+
+  userName.append(aUserName);
+  userEmail.append(aUserEmail);
+
+}
+
+window.onload = function() {
+  renderPets();
+  renderUser();
 }

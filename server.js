@@ -43,3 +43,10 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
+
+// everything needed to reference should be availalbe anywhere on page localstorage.getItem to delete from db, when timeslot is selected, delete it from the db
+
+// route doesnt work for this, its in schedule js, post part works
+
+// login page-- could do the same format for the appointments- appt.id to account id saved in local storage, referenced that way
+// find all appointments route to populate individual appts for ppl on profile pages
