@@ -14,12 +14,15 @@ router.get('/dates', async (req, res) => {
     res.status(500).json(err);
   }
 })
+
 router.post('/appointments', async (req, res) => {
   try {
     const slot = await Appointment.Create({
       ...req.body,
       user_
     })
+  } catch (err) {
+    res.status(500).json(err);
   }
 })
 
