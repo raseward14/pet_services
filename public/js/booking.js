@@ -1,3 +1,4 @@
+let appointmentArray = [];
 document.getElementById("book-btn").addEventListener("click", function(event) {
   event.preventDefault();
   let typeOfService = figureWhatService();
@@ -38,29 +39,45 @@ function figureWhatTime() {
 
 async function makeAppointment(timeSlotToRemove) {
   let slotIndex;
+  let appointmentTime;
   if (timeSlotToRemove === "9") {
-    slotIndex = "0";
+    appointmentTime = "9 AM";
+    slotIndex = 9;
   } else if (timeSlotToRemove === "10") {
-    slotIndex = "1";
+    appointmentTime = "10 AM";
+    slotIndex = 10;
   } else if (timeSlotToRemove === "12") {
-    slotIndex = "2";
+    appointmentTime = "12 PM";
+    slotIndex = 12;
   } else if (timeSlotToRemove === "13") {
-    slotIndex = "3";
+    appointmentTime = "1 PM";
+    slotIndex = 13;
   } else if (timeSlotToRemove === "14") {
-    slotIndex = "4";
+    appointmentTime = "2 PM";
+    slotIndex = 14;
   } else if (timeSlotToRemove === "15") {
-    slotIndex = "5";
+    appointmentTime = "3 PM";
+    slotIndex = 15;
   } else if (timeSlotToRemove === "16") {
-    slotIndex = "6"
+    appointmentTime = "4 PM";
+    slotIndex = 16;
   }
   let person = JSON.parse(localStorage.getItem("user"));
   let appointmentDate = localStorage.getItem("scheduleDate");
   console.log(person.id);
   const make = await fetch('/api/schedule/appointments', {
     method: 'POST',
-    body: JSON.stringify({ account_id: person.id, employee_id: "1", time_slot: slotIndex, date: appointmentDate }),
+    body: JSON.stringify({ accountId: person.id, employeeId: 1, timeSlot: slotIndex, date: appointmentDate }),
     headers: { 'Content-Type': 'application/json' },
-  })
+  });
+  let datePop = localStorage.getItem("dateToPopulate");
+  let appDate = {
+    when: datePop,
+    time: appointmentTime,
+    with: "Johnson"
+  }
+  appointmentArray.push(appDate);
+  localStorage.setItem("appointments", JSON.stringify(appointmentArray))
 }
 
 function deleteTimeSlot() {

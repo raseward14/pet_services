@@ -13,10 +13,10 @@ let id = document.getElementById("user-id");
 // on click input field disappears
 document.getElementById("info-btn").addEventListener("click", function (event) {
   event.preventDefault();
-  const infoDiv = document.querySelector(".dogInfo");
-  infoDiv.style.display = "hidden";
+  //const infoDiv = document.querySelector(".dogInfo");
+  //infoDiv.style.display = "none";
   const infoForm = document.getElementById("info-form");
-  infoForm.style.display = "hidden";
+  infoForm.style.display = "none";
   storePet();
 });
 
@@ -71,7 +71,7 @@ function renderPets() {
     aPet.setAttribute('data-index', i)
     aPet.classList.add('pet');
     console.log(aPet);
-   
+
     // append the list item to the highscores array
     petList.prepend(aPet);
   }

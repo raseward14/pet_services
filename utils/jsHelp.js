@@ -109,7 +109,7 @@ async function scheduleAppt(accountParam, employeeParam, dateParam, milTimeSlot)
         date: dateParam
     }).catch((err) => console.log(err));
 
-    // let employeeDay = 
+    // let employeeDay =
     Employee.findOne({ where: { date: dateParam } }).then((employeeDay) => {
         // console.log(employeeDay['milTimeSlots'])
         employeeDay['milTimeSlots'] = employeeDay['milTimeSlots'].split(",").filter(item => parseInt(item) !== milTimeSlot).join(",")
@@ -151,7 +151,7 @@ async function scheduleAppt(accountParam, employeeParam, dateParam, milTimeSlot)
 //     // console.log(bigObj)
 // }
 
-//wants a plain array of employees  
+//wants a plain array of employees
 // function getNameAndTimeSlotsForDay(date, employees) {
 //     let returnArr = []
 //     employees.forEach((employee) => {
@@ -199,7 +199,7 @@ async function scheduleAppt(accountParam, employeeParam, dateParam, milTimeSlot)
 //     }
 // }
 
-scheduleAppt(1, 1, "2021-3-15", 10)
+//scheduleAppt(1, 1, "2021-3-15", 10)
 
 
 
