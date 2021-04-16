@@ -80,8 +80,9 @@ async function makeAppointment(timeSlotToRemove) {
   localStorage.setItem("appointments", JSON.stringify(appointmentArray));
 }
 
-async function deleteTimeSlot(timeSlotToRemove) {
+function deleteTimeSlot(timeSlotToRemove) {
   let newTimes;
+  let update;
   let appointmentDate = localStorage.getItem("scheduleDate");
   fetch("http://localhost:3001/api/schedule/dates")
     .then(response => response.json())
@@ -92,18 +93,20 @@ async function deleteTimeSlot(timeSlotToRemove) {
           console.log(options);
           newTimes = options.filter(option => option !== timeSlotToRemove);
           console.log(newTimes);
-          let update = newTimes.join(",");
-          const remove = await fetch('api/schedule/', {
-            method: 'PUT',
-            body: JSON.stringify({
-              date: scheduleDate,
-              milTimeSlots: update
-            }),
-            headers: { 'Content-Type': 'application/json' },
-          });
+          update = newTimes.join(",");
+          return update;
         }
       }
-    });
+    }).then(update => {
+      const remove = fetch('api/schedule/remove', {
+        method: 'PUT',
+        body: JSON.stringify({
+          date: scheduleDate,
+          milTimeSlots: update
+        }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+    })
 
   //const remove = await fetch('api/schedule/', {
     //method: 'PUT',

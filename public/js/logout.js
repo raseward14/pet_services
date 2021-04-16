@@ -3,12 +3,13 @@ const logout = async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
-  
+
     if (response.ok) {
+      localStorage.clear();
       document.location.replace('/');
     } else {
       alert(response.statusText);
     }
   };
-  
+
   document.querySelector('#logout').addEventListener('click', logout);
