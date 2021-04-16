@@ -12,13 +12,23 @@
         body: JSON.stringify({ name: name, email: email, petName: petName, role: "user", password}),
         headers: { 'Content-Type': 'application/json' },
       });
-      let user = {
-        name: name,
-        email: email,
-        petname: petName
-      }
-      localStorage.setItem("user", JSON.stringify(user));
       if (response.ok) {
+        fetch('/api/users/info')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          for (var i = 0; i < data.length; i++) {
+            let individual = data[i];
+            if (individual.email === email) {
+              let user = {
+                id: individual.id,
+                name: individual.name,
+                email: individual.email
+              }
+              localStorage.setItem('user', JSON.stringify(user));
+            }
+          }
+        })
         document.location.replace('/info');
       } else {
         alert(response.statusText);
