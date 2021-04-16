@@ -92,6 +92,8 @@
     function populateDate(currentValue) {
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         let bookingMonth = months[currentValue.getMonth()];
+        let dateToPopulate = bookingMonth + ' ' + currentValue.getDate() + ', ' + currentValue.getFullYear();
+        localStorage.setItem('dateToPopulate', dateToPopulate);
         modalLabel.text(bookingMonth + ' ' + currentValue.getDate() + ', ' + currentValue.getFullYear());
     }
     const closeM = $(".modal-close");
