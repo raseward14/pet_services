@@ -8,13 +8,13 @@
         "shiftEnd": 17,
         "accountid": 1,
         "daysWorking": [
+            0,
             1,
             2,
             3,
             4,
             5,
-            6,
-            7
+            6
         ]
     }
 ]

@@ -24,6 +24,18 @@ router.post('/appointments', async (req, res) => {
   }
 })
 
+router.put('/remove', async (req, res) => {
+  try {
+    const updateTimes = await Employee.update(req.body, {
+      where: {
+        date: req.body.date
+      }
+    });
+    res.status(200).json(updateTimes);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+})
 
 //router.get('/dates', (req, res) => {
 
