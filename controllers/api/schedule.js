@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const helpers = require('../../utils/jsHelp.js')
 const sequelize = require('../../config/connection.js');
-const { Employee } = require('../../models')
+const { Employee } = require('../../models');
+const { Appointment } = require('../../models')
 
 router.get('/dates', async (req, res) => {
   try {
@@ -11,6 +12,14 @@ router.get('/dates', async (req, res) => {
     res.status(200).json(helpers.simplifyTimeSlots(times));
   } catch (err) {
     res.status(500).json(err);
+  }
+})
+router.post('/appointments', async (req, res) => {
+  try {
+    const slot = await Appointment.Create({
+      ...req.body,
+      user_
+    })
   }
 })
 
