@@ -1,6 +1,6 @@
-let appointmentArray = [];
+
 document.getElementById("book-btn").addEventListener("click", function (event) {
-  // event.preventDefault();
+  event.preventDefault();
   let typeOfService = figureWhatService();
   let timeSlotToRemove = figureWhatTime();
   makeAppointment(timeSlotToRemove)
@@ -77,8 +77,19 @@ async function makeAppointment(timeSlotToRemove) {
     time: appointmentTime,
     with: "Johnson"
   }
+  let appointmentArray = [];
   appointmentArray.push(appDate);
-  localStorage.setItem("appointments", JSON.stringify(appointmentArray));
+  let appointment = JSON.parse(localStorage.getItem("appointments"));
+  if (appointment !== null) {
+    for (var i = 0; i < appointment.length; i++) {
+      appointmentArray.push(appointment[i]);
+
+    }
+    localStorage.setItem("appointments", JSON.stringify(appointmentArray));
+  } else {
+    localStorage.setItem("appointments", JSON.stringify(appointmentArray));
+  }
+
 }
 
 function deleteTimeSlot(timeSlotToRemove) {

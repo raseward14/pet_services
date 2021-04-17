@@ -8,7 +8,7 @@ let petList = document.getElementById("pet-list");
 let userName = document.getElementById("user-name");
 let userEmail = document.getElementById("user-email");
 let id = document.getElementById("user-id");
-let petArray = [];
+let another = document.getElementById("new-btn");
 
 // on click input field disappears
 document.getElementById("info-btn").addEventListener("click", function (event) {
@@ -23,8 +23,18 @@ document.getElementById("info-btn").addEventListener("click", function (event) {
     birthday: petBirthday.value,
     breed: petBreed.value,
   };
+  let petArray = [];
   petArray.push(myPet);
-  localStorage.setItem("yourPets", JSON.stringify(petArray));
+  let pets = JSON.parse(localStorage.getItem("yourPets"));
+  if (pets !== null) {
+    for (var i = 0; i < pets.length; i++) {
+      petArray.push(pets[i]);
+    }
+    localStorage.setItem("yourPets", JSON.stringify(petArray));
+  } else {
+    localStorage.setItem("yourPets", JSON.stringify(petArray));
+
+  }
   renderPets();
 });
 
@@ -33,24 +43,27 @@ document.getElementById("info-btn").addEventListener("click", function (event) {
 
 function renderPets() {
   // get pets array
-  var myPets = JSON.parse(localStorage.getItem('yourPets'));
+  var myPets = [];
+  myPets.push(JSON.parse(localStorage.getItem('yourPets')));
 
 
 
-  console.log(myPets);
+
   if (myPets !== null) {
+    console.log(myPets);
     document.getElementById("userInfo").style.display = "inline";
     document.getElementById("info-form").style.display = "none";
-    for(let i=0; i < myPets.length; i++) {
+    for (let i = 0; i < myPets.length; i++) {
       // each pet has an index in array
       var aPet = document.createElement('li');
+      console.log('loop doesnt work');
       aPet.textContent = `Name: ${myPets[i].name}, Gender: ${myPets[i].gender}, Birthday: ${myPets[i].birthday}, Breed: ${myPets[i].breed}`;
       aPet.setAttribute('data-index', i)
       aPet.classList.add('pet');
       console.log(aPet);
 
       // append the list item to the highscores array
-      petList.prepend(aPet);
+      petList.appendChild(aPet);
     }
   } else {
     document.getElementById("info-form").style.display = "inline";
@@ -96,6 +109,11 @@ function renderAppointments() {
     }
   }
 }
+another.addEventListener("click", function (event) {
+  event.preventDefault();
+  document.getElementById("info-form").style.display = "inline";
+  document.getElementById("userInfo").style.display = "none";
+})
 
 window.onload = function() {
   renderPets();
