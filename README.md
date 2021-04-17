@@ -24,6 +24,8 @@ DB_USER=youruser"
 
 run "npm i" in the root directory.
 
+run "npm run seed"
+
 run "npm run start"
 
 And you should be able to find the site when you navigate to "localhost:3001"
