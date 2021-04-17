@@ -55,19 +55,14 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/about', (req, res) => {
-    res.render('about');
-});
-
 router.get('/index', (req, res) => {
     res.render('index');
 });
 
-router.get('/info', (req, res) => {
-    //res.render('info', {
-        //logged_in: req.session.logged_in
-    //});
-    res.render('info');
+router.get('/info', withAuth, (req, res) => {
+    res.render('info', {
+        logged_in: true
+    });
 });
 
 router.get('/signup', (req, res) => {
@@ -80,22 +75,10 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/calendar', withAuth, (req, res) => {
-
-    //try {
-        //const employeeData = await Employee.findAll();
-        //const employees = employeeData.map((employee) => employee.get({ plain: true }));
-        //console.log(condenseScheduleObjWeeks([employees[0].week1, employees[0].week2, employees[0].week3, employees[0].week4]))
-        // let times = employees.map((employee) => condenseScheduleObjWeeks([employee.week1, employee.week2, employee.week3, employee.week4]))
-        // console.log(times)
-
-        //res.render('calendar', {
-            //employees,
-            // logged_in: req.session.logged_in
-        //});
-    //} catch (err) {
-        //res.status(500).json(err);
-    //}
-    res.render('calendar');
+    // if user already logged in, redirect request to another route
+    res.render('calendar', {
+        logged_in: true
+    });
 });
 
 module.exports = router;

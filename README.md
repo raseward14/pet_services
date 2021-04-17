@@ -1,43 +1,59 @@
-# pet_services
-Application to view employee calendars, and book appointments for various pet services including grooming.
+# Dog on The Move
 
-## User Story
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-```md
-AS A pet owner
-I WANT to view employee calendars with available timeslots
-SO THAT I can schedule groomings, dog walks, and appointments
-```
+## Description 
 
-## Acceptance Criteria
+Dog On The Move is a dog walking and pet sitting service locally in Denver, Colorado. In any situation, whether it be working long hours, or maybe you're planning a vacation with some friend, Dog On The Move is here to save the day! We love making new furry friends and we take great pride in helping you with all your pet care needs. Our dog walker is dedicated to providing the highest quality service for you and your pets. We have over 10 years of experience, and our number one concern is the safety of your pet. If you are ever on the move, you can count on Dog On The Move to help move your dog.
 
-```md
-GIVEN an online application
-WHEN I visit the site for the first time
-THEN I am presented with the homepage, which prompts login explaining why login is necessary, and an explanation about the company and services
-WHEN I choose to sign up
-THEN I am prompted to create a username and password
-WHEN I click on the sign-up button
-THEN my user credentials are saved and I am logged into the site
-WHEN I revisit the site at a later time and choose to sign in
-THEN I am prompted to enter my username and password
-WHEN I am signed in to the site
-THEN I see my calendar, and links to my calendar, the services, and employee calendars
-WHEN I click on the services option
-THEN I am taken to the homepage and presented with a list of services
-WHEN I click on a service
-THEN I am presented with the employee's calendar for that service, displaying available timeslots
-WHEN I select a timeslot, i am presented with a form containing pet name, afraid of anything, and misc info
-THEN the appointment is saved and the employee calendar is updated to display the appointment, the pet’s name, and the date created
-WHEN I click on the dashboard option in the navigation
-THEN I am taken to the dashboard and presented with my calendar showing appointments I have already created and the option to add a new reservation
-WHEN I click on the button to add a new reservation
-THEN I am prompted to select the service
-WHEN I click on the service to make a new appointment
-THEN the calendar for the corresponding employee displays available timeslots
-WHEN I click on one of my exhisting appointments
-THEN I am able to delete or update my pets appointment and taken back to an updated dashboard
-WHEN I click on the logout option in the navigation
-THEN I am signed out of the site
-WHEN I am idle on the page for more than a set time
-THEN I am automatically signed out of the site
+## Installation
+
+Clone the files to your local machine.
+
+Have a mysql server running.
+
+Create the DB found in /db/schema.sql in your mysql server
+
+Create a .env file in the root directory like so
+
+"DB_NAME=services_db
+
+DB_PASSWORD=yourpw
+
+DB_USER=youruser"
+
+run "npm i" in the root directory.
+
+run "npm run seed"
+
+run "npm run start"
+
+And you should be able to find the site when you navigate to "localhost:3001"
+
+
+## Usage
+
+Navigate to either [Heroku](https://radiant-basin-77736.herokuapp.com/), or "localhost:3001" if you're running the site locally.
+
+Sign up, and schedule a dog walking appointment on the calender!
+
+You should be able to see your scheduled appoints in your "Profile"
+
+* **The Finished Product**  
+![Pet-Services](public/images/snapshot.png)
+
+## Credits
+
+[Brett Fitzpatrick](https://github.com/fitzpatb)
+
+[Richard Seward](https://github.com/raseward14)
+
+[Yousef Shahin](https://github.com/Yousef95-lab)
+
+[Brandon Minard](https://github.com/BrandonMinard)
+
+## License
+
+Licensed under the MIT license, see LICENSE.txt for more information.
+
+
