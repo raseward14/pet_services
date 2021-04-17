@@ -49,7 +49,7 @@ router.get('/profile', async (req, res) => {
 router.get('/login', (req, res) => {
     // if user is already logged in, redirect req to another route
     if (req.session.logged_in) {
-        res.redirect('/profile');
+        res.redirect('/info');
         return;
     }
     res.render('login');

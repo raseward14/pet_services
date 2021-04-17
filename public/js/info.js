@@ -8,7 +8,7 @@ let petList = document.getElementById("pet-list");
 let userName = document.getElementById("user-name");
 let userEmail = document.getElementById("user-email");
 let id = document.getElementById("user-id");
-
+let petArray = [];
 
 // on click input field disappears
 document.getElementById("info-btn").addEventListener("click", function (event) {
@@ -17,64 +17,47 @@ document.getElementById("info-btn").addEventListener("click", function (event) {
   //infoDiv.style.display = "none";
   const infoForm = document.getElementById("info-form");
   infoForm.style.display = "none";
-  storePet();
-});
-
-// set pet info to local storage
-function storePet() {
-  // array of pets
-  var petArray = savedPets();
-
-  // constructor function for the entered pet creates object
   var myPet = {
     name: petName.value,
     gender: petGender.value,
     birthday: petBirthday.value,
     breed: petBreed.value,
   };
-
-  // push my pet into the array
   petArray.push(myPet);
   localStorage.setItem("yourPets", JSON.stringify(petArray));
-
   renderPets();
-}
+});
 
-// get from local storage on load
-function savedPets() {
+// set pet info to local storage
 
-  var myPets = localStorage.getItem('yourPets');
-
-  // if we have pets in local storage, JSON.parse into an array
-  if (myPets !== null) {
-    myPets = JSON.parse(myPets);
-  } else {
-    myPets = [];
-  }
-
-  // returns myPets array for the myPets var above
-  return myPets;
-}
 
 function renderPets() {
   // get pets array
-  var myPets = savedPets();
-  // sets pet-list innerHTML to empty
-  petList.innerHTML = '';
+  var myPets = JSON.parse(localStorage.getItem('yourPets'));
+
+
 
   console.log(myPets);
-  // for loop creating pet list
-  for(let i=0; i < myPets.length; i++) {
-    // each pet has an index in array
-    var aPet = document.createElement('li');
-    aPet.textContent = `Name: ${myPets[i].name}, Gender: ${myPets[i].gender}, Birthday: ${myPets[i].birthday}, Breed: ${myPets[i].breed}`;
-    aPet.setAttribute('data-index', i)
-    aPet.classList.add('pet');
-    console.log(aPet);
+  if (myPets !== null) {
+    document.getElementById("userInfo").style.display = "inline";
+    document.getElementById("info-form").style.display = "none";
+    for(let i=0; i < myPets.length; i++) {
+      // each pet has an index in array
+      var aPet = document.createElement('li');
+      aPet.textContent = `Name: ${myPets[i].name}, Gender: ${myPets[i].gender}, Birthday: ${myPets[i].birthday}, Breed: ${myPets[i].breed}`;
+      aPet.setAttribute('data-index', i)
+      aPet.classList.add('pet');
+      console.log(aPet);
 
-    // append the list item to the highscores array
-    petList.prepend(aPet);
+      // append the list item to the highscores array
+      petList.prepend(aPet);
+    }
+  } else {
+    document.getElementById("info-form").style.display = "inline";
+    document.getElementById("userInfo").style.display = "none";
   }
+  // for loop creating pet list
+
 }
 
 function renderUser() {
@@ -101,7 +84,21 @@ function renderUser() {
 
 }
 
+function renderAppointments() {
+  let bookingsDiv = document.getElementById('bookings');
+  let bookings = JSON.parse(localStorage.getItem("appointments"));
+  if (bookings !== null) {
+    console.log(bookings);
+    for (var i = 0; i < bookings.length; i++) {
+      let newAppointment = document.createElement('p');
+      newAppointment.textContent = bookings[i].when + " @" + bookings[i].time + " with " + bookings[i].with;
+      bookingsDiv.appendChild(newAppointment);
+    }
+  }
+}
+
 window.onload = function() {
   renderPets();
   renderUser();
+  renderAppointments();
 }
