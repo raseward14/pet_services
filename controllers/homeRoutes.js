@@ -65,7 +65,7 @@ router.get('/index', (req, res) => {
 
 router.get('/info', (req, res) => {
     //res.render('info', {
-        //logged_in: req.session.logged_in
+    //logged_in: req.session.logged_in
     //});
     res.render('info');
 });
@@ -82,18 +82,18 @@ router.get('/signup', (req, res) => {
 router.get('/calendar', (req, res) => {
 
     //try {
-        //const employeeData = await Employee.findAll();
-        //const employees = employeeData.map((employee) => employee.get({ plain: true }));
-        //console.log(condenseScheduleObjWeeks([employees[0].week1, employees[0].week2, employees[0].week3, employees[0].week4]))
-        // let times = employees.map((employee) => condenseScheduleObjWeeks([employee.week1, employee.week2, employee.week3, employee.week4]))
-        // console.log(times)
+    //const employeeData = await Employee.findAll();
+    //const employees = employeeData.map((employee) => employee.get({ plain: true }));
+    //console.log(condenseScheduleObjWeeks([employees[0].week1, employees[0].week2, employees[0].week3, employees[0].week4]))
+    // let times = employees.map((employee) => condenseScheduleObjWeeks([employee.week1, employee.week2, employee.week3, employee.week4]))
+    // console.log(times)
 
-        //res.render('calendar', {
-            //employees,
-            // logged_in: req.session.logged_in
-        //});
+    //res.render('calendar', {
+    //employees,
+    // logged_in: req.session.logged_in
+    //});
     //} catch (err) {
-        //res.status(500).json(err);
+    //res.status(500).json(err);
     //}
     res.render('calendar');
 });
