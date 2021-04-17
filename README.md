@@ -33,7 +33,7 @@ And you should be able to find the site when you navigate to "localhost:3001"
 
 ## Usage
 
-Navigate to either "put our URL to heroku in here", or "localhost:3001" if you're running the site locally.
+Navigate to either [Heroku](https://radiant-basin-77736.herokuapp.com/), or "localhost:3001" if you're running the site locally.
 
 Sign up, and schedule a dog walking appointment on the calender!
 
