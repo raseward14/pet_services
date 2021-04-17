@@ -30,7 +30,7 @@ const loginFormHandler = async (event) => {
           }
         })
       //localStorage.setItem('user', email);
-      //document.location.replace('/info');
+      document.location.replace('/info');
     } else {
       alert('Failed to log in');
     }
