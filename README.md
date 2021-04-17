@@ -39,6 +39,9 @@ Sign up, and schedule a dog walking appointment on the calender!
 
 You should be able to see your scheduled appoints in your "Profile"
 
+* **The Finished Product**  
+![Pet-Services](public/images/snapshot.png)
+
 ## Credits
 
 [Brett Fitzpatrick](https://github.com/fitzpatb)
