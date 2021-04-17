@@ -96,7 +96,7 @@ function deleteTimeSlot(timeSlotToRemove) {
   let newTimes;
   let update;
   let appointmentDate = localStorage.getItem("scheduleDate");
-  fetch("http://localhost:3001/api/schedule/dates")
+  fetch("/api/schedule/dates")
     .then(response => response.json())
     .then(data => {
       for (const keys in data) {

@@ -134,7 +134,7 @@
     });
 
     function getDatesTimeslots(scheduleDate) {
-        fetch("http://localhost:3001/api/schedule/dates")
+        fetch("/api/schedule/dates")
             .then(response => response.json())
             .then(data => {
                 console.log(data);
