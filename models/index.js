@@ -1,4 +1,4 @@
-const Employee = require('./Employee');
+const Employee = require('./employee');
 const Account = require('./Account')
 const Appointment = require('./Appointment')
 
